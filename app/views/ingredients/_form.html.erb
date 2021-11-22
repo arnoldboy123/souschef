@@ -1,0 +1,14 @@
+<div class="form-container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <%= simple_form_for(@seaplane) do |f| %>
+        <%= f.input :name, placeholder: "Name", label: false%>
+        <%= f.input :unit, placeholder: "Unit",label: false%>
+        <%= f.input :calories, placeholder: "Calories",label: false %>
+        <%= f.input :price, placeholder: "Price",label: false %>
+        <%= f.input :category, placeholder: "Category",label: false %>
+        <%= s.submit class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
