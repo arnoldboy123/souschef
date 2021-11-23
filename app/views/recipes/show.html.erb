@@ -1,0 +1,7 @@
+
+<%= image_tag("cake.jpg", width: "400px", heigth: '200px', alt: "an image of a recipe") %>
+<h5><%= @recipe.name %></h5>
+<p><%= @recipe.cooking_time %>min</p>
+<%= @recipe.instructions %><br>
+<%= @recipe.description %><br>
+<%= link_to "back", recipes_path(@recipes) %>
