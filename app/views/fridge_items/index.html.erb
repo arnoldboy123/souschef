@@ -1,0 +1,6 @@
+<h2>My fridge</h2>
+<ul>
+<% @fridge_items.each do |item| %>
+  <li><%= item.ingredient.name %></li>
+<% end %>
+</ul>
