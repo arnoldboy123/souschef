@@ -43,7 +43,7 @@ class PlannedRecipesController < ApplicationController
       PlannedRecipe.create!(date: today + i, user: current_user, recipe: Recipe.last)
       today += 1.day
     end
-    @planner_recipes = PlannedRecipe.all
+    @planner_recipes = PlannedRecipe.order(:date)
     @all_recipes = Recipe.where(creator: current_user)
   end
 
