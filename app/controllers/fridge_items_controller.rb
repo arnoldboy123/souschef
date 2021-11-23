@@ -1,6 +1,8 @@
 class FridgeItemsController < ApplicationController
+  before_action :find_fridge_item, only: [:edit, :update, :destroy]
 
   def edit
+
   end
 
   def update
@@ -12,7 +14,7 @@ class FridgeItemsController < ApplicationController
   private
 
   def find_fridge_item
-    @fridge_item = Fridge.find(params[:id])
+    @fridge_item = Fridge_item.find(params[:id])
   end
 
   def fridge_params
