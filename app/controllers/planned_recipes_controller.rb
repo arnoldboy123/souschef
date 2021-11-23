@@ -33,6 +33,17 @@ class PlannedRecipesController < ApplicationController
     end
   end
 
+  def planner(days)
+    today = Date.today
+    planner_dates = []
+    i = 1
+    days.to_i.times do
+      PlannedRecipe.create!(date = today + i)
+      today += 1.day
+    end
+    @planned_recipes = PlannedRecipe.where(date: [nil, ""])
+  end
+
   private
 
   def find_planned_recipe
