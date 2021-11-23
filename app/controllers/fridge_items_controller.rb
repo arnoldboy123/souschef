@@ -1,14 +1,14 @@
 class FridgeItemsController < ApplicationController
   before_action :find_fridge_item, only: [:edit, :update, :destroy]
 
-  def edit
-
-  end
+  def edit; end
 
   def update
+    @fridge_item.update(fridge_params)
   end
 
   def destroy
+    @fridge_item.destroy
   end
 
   private
