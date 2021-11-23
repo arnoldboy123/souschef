@@ -11,7 +11,7 @@ puts "adding ingredients..."
 300.times do
   @ingredient = Ingredient.new(name: Faker::Food.unique.ingredient)
   puts @ingredient.name
-  @ingredients.save!
+  @ingredient.save!
 end
 
 puts "Done"
