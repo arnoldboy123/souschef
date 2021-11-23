@@ -3,7 +3,7 @@ class FridgeItemsController < ApplicationController
 
   def index
     @fridge_items = FridgeItem.all
-    @fridge_items = @fridge_items.where(user_id == current_user.id)
+    @fridge_items = @fridge_items.where(user_id: current_user)
   end
 
   def new
