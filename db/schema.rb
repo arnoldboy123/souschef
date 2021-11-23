@@ -15,37 +15,6 @@ ActiveRecord::Schema.define(version: 2021_11_23_104001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "planned_recipes", force: :cascade do |t|
-    t.date "date"
-    t.bigint "recipe_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipe_id"], name: "index_planned_recipes_on_recipe_id"
-    t.index ["user_id"], name: "index_planned_recipes_on_user_id"
-  end
-
-  create_table "recipes", force: :cascade do |t|
-    t.bigint "creator_id", null: false
-    t.string "name"
-    t.text "instructions"
-    t.integer "cooking_time"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["creator_id"], name: "index_recipes_on_creator_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.float "rating"
-    t.text "comment"
-    t.bigint "recipe_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipe_id"], name: "index_reviews_on_recipe_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
-  end
-  
   create_table "FriendRequests", force: :cascade do |t|
     t.boolean "approved"
     t.datetime "created_at", precision: 6, null: false
@@ -87,12 +56,43 @@ ActiveRecord::Schema.define(version: 2021_11_23_104001) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "planned_recipes", force: :cascade do |t|
+    t.date "date"
+    t.bigint "recipe_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_planned_recipes_on_recipe_id"
+    t.index ["user_id"], name: "index_planned_recipes_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.bigint "creator_id", null: false
+    t.string "name"
+    t.text "instructions"
+    t.integer "cooking_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["creator_id"], name: "index_recipes_on_creator_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.float "rating"
+    t.text "comment"
+    t.bigint "recipe_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_reviews_on_recipe_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -109,16 +109,16 @@ ActiveRecord::Schema.define(version: 2021_11_23_104001) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "planned_recipes", "recipes"
-  add_foreign_key "planned_recipes", "users"
-  add_foreign_key "recipes", "users", column: "creator_id"
-  add_foreign_key "reviews", "recipes"
-  add_foreign_key "reviews", "users"
   add_foreign_key "FriendRequests", "users", column: "recipient_id"
   add_foreign_key "FriendRequests", "users", column: "requester_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "fridge_items", "ingredients"
   add_foreign_key "fridge_items", "users"
+  add_foreign_key "planned_recipes", "recipes"
+  add_foreign_key "planned_recipes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "recipes", "users", column: "creator_id"
+  add_foreign_key "reviews", "recipes"
+  add_foreign_key "reviews", "users"
 end
