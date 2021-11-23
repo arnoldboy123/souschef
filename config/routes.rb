@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :recipes
-  resources :planned_recipes, only: [:index, :edit, :update]
+  resources :planned_recipes, only: [:create, :index, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
