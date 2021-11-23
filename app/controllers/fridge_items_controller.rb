@@ -1,6 +1,13 @@
 class FridgeItemsController < ApplicationController
   before_action :find_fridge_item, only: [:edit, :update, :destroy]
 
+  def index
+    @fridge_item = FridgeItem.all
+    @fridge_item = @fridge_item.where(user_id == current_user.id)
+  end
+
+  def new; end
+
   def edit; end
 
   def update
@@ -14,7 +21,7 @@ class FridgeItemsController < ApplicationController
   private
 
   def find_fridge_item
-    @fridge_item = Fridge_item.find(params[:id])
+    @fridge_item = FridgeItem.find(params[:id])
   end
 
   def fridge_params
