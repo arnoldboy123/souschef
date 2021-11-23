@@ -6,7 +6,7 @@ Hello world
     <% @planned_recipe = PlannedRecipe.find(recipe.id) %>
     <%= recipe.date %>
     <%= simple_form_for @planned_recipe, method: :patch do |f| %>
-      <%= f.association :recipe, placeholder: "Pick a recipe" %>
+      <%= f.association :recipe, include_blank: true, selected: 0 %>
       <%= f.submit "Pick recipe", class: "btn btn-primary" %>
     <% end %>
     <%= recipe.recipe.name %>
