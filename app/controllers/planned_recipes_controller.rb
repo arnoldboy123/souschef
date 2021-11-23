@@ -1,5 +1,6 @@
 class PlannedRecipesController < ApplicationController
   before_action :find_planned_recipe, only: %i[show edit update]
+  skip_before_action :verify_authenticity_token
 
   def index
     @planned_recipes = PlannedRecipe.where(user_id: current_user.id)
@@ -33,15 +34,17 @@ class PlannedRecipesController < ApplicationController
     end
   end
 
-  def planner(days)
+  def planner
+    days = params[:days]
+    puts days
     today = Date.today
-    planner_dates = []
     i = 1
     days.to_i.times do
-      PlannedRecipe.create!(date = today + i)
+      PlannedRecipe.create!(date: today + i, user: current_user, recipe: Recipe.last)
       today += 1.day
     end
-    @planned_recipes = PlannedRecipe.where(date: [nil, ""])
+    @planner_recipes = PlannedRecipe.all
+    @all_recipes = Recipe.where(creator: current_user)
   end
 
   private
@@ -51,6 +54,6 @@ class PlannedRecipesController < ApplicationController
   end
 
   def planned_recipe_params
-    params.require(:planned_recipe).permit(:date)
+    params.require(:planned_recipe).permit(:date, :recipe_id)
   end
 end

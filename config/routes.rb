@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :recipes
   resources :planned_recipes, only: [:create, :index, :edit, :update, :show] do
     collection do
+      post :planner
       get :planner
     end
   end
