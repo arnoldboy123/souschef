@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "removing ingredients..."
+
+Ingredient.destroy_all
+
 puts "adding ingredients..."
 
 300.times do

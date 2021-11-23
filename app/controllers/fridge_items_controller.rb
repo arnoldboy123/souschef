@@ -6,16 +6,16 @@ class FridgeItemsController < ApplicationController
     @fridge_item = @fridge_item.where(user_id == current_user.id)
   end
 
-  def new
-  end
+  def new; end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    @fridge_item.update(fridge_params)
   end
 
   def destroy
+    @fridge_item.destroy
   end
 
   private
