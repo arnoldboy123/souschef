@@ -2,4 +2,9 @@
 <p>Find me in app/views/pages/home.html.erb</p>
 
 <%= link_to 'My Fridge :)', fridge_items_path %>
-<%= link_to 'view all recipes :)', recipes_path %>
+
+<form action="/planned_recipes/planner" method="post">
+   <input type="integer" name="days">
+   <input type="submit">
+</form>
+
