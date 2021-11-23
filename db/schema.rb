@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2021_11_22_180900) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
@@ -26,6 +27,8 @@ ActiveRecord::Schema.define(version: 2021_11_22_180900) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+=======
+>>>>>>> 3331ba75f46248b485a6ad8407cb4d017109e074
   create_table "fridge_items", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "ingredient_id", null: false
@@ -36,6 +39,19 @@ ActiveRecord::Schema.define(version: 2021_11_22_180900) do
     t.index ["user_id"], name: "index_fridge_items_on_user_id"
   end
 
+<<<<<<< HEAD
+=======
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.string "unit"
+    t.integer "calories"
+    t.float "price"
+    t.string "category"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+>>>>>>> 3331ba75f46248b485a6ad8407cb4d017109e074
   create_table "friend_requests", force: :cascade do |t|
     t.boolean "approved"
     t.datetime "created_at", precision: 6, null: false
@@ -78,6 +94,13 @@ ActiveRecord::Schema.define(version: 2021_11_22_180900) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< HEAD
+=======
+  add_foreign_key "fridge_items", "ingredients"
+  add_foreign_key "fridge_items", "users"
+  add_foreign_key "friend_requests", "users", column: "recipient_id"
+  add_foreign_key "friend_requests", "users", column: "requester_id"
+>>>>>>> 3331ba75f46248b485a6ad8407cb4d017109e074
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "fridge_items", "ingredients"

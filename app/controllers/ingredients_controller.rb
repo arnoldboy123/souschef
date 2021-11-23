@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :find_ingredient, only: %i[show edit upload delete]
+  before_action :find_ingredient, only: %i[show edit update delete]
   def index
     @ingredients = Ingredient.all
   end
