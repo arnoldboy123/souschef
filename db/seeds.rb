@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "destroy all recipes"
+Recipe.destroy_all
 puts "killing current users"
 User.destroy_all
 
@@ -37,4 +39,16 @@ item = FridgeItem.new
 item.ingredient_id = Ingredient.first.id
 item.user_id = User.last.id
 item.save!
+
+puts "adding some recipes"
+50.times do
+  @recipe = Recipe.new(
+    name: Faker::Food.unique.dish,
+    creator: User.first,
+    instructions: Faker::Lorem.sentence,
+    cooking_time: Faker::Number.number(digits: 2)
+  )
+  puts @recipe.name
+  @recipe.save!
+end
 puts "Enjoy!"
