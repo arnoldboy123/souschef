@@ -44,6 +44,7 @@ puts "adding some recipes"
 50.times do
   @recipe = Recipe.new(
     name: Faker::Food.unique.dish,
+    description: Faker::Lorem.sentence,
     creator: User.first,
     instructions: Faker::Lorem.sentence,
     cooking_time: Faker::Number.number(digits: 2)
