@@ -41,10 +41,10 @@ class RecipesController < ApplicationController
   private
 
   def find_recipe
-    @recipe = Recipes.find(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :instructions, :cooking_time)
+    params.require(:recipe).permit(:name, :instructions, :cooking_time, :description)
   end
 end
