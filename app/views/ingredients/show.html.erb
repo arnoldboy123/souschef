@@ -3,3 +3,6 @@
 <%= @ingredient.calories %>
 <%= @ingredient.price %>
 <%= @ingredient.category %>
+
+<%= link_to "Edit", edit_ingredient_path %>
+<%= link_to "Delete", ingredients_path(@ingredient), method: :delete, data: { confirm: 'Do you really want to?' } %>

@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_180900) do
+ActiveRecord::Schema.define(version: 2021_11_23_104001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -30,17 +31,60 @@ ActiveRecord::Schema.define(version: 2021_11_22_180900) do
 =======
 >>>>>>> 3331ba75f46248b485a6ad8407cb4d017109e074
   create_table "fridge_items", force: :cascade do |t|
+=======
+  create_table "planned_recipes", force: :cascade do |t|
+    t.date "date"
+    t.bigint "recipe_id", null: false
+>>>>>>> ace24de8b127dcc60febf35b151c9431f592aab1
     t.bigint "user_id", null: false
-    t.bigint "ingredient_id", null: false
-    t.date "expiry_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["ingredient_id"], name: "index_fridge_items_on_ingredient_id"
-    t.index ["user_id"], name: "index_fridge_items_on_user_id"
+    t.index ["recipe_id"], name: "index_planned_recipes_on_recipe_id"
+    t.index ["user_id"], name: "index_planned_recipes_on_user_id"
   end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+  create_table "ingredients", force: :cascade do |t|
+=======
+  create_table "recipes", force: :cascade do |t|
+    t.bigint "creator_id", null: false
+>>>>>>> ace24de8b127dcc60febf35b151c9431f592aab1
+    t.string "name"
+    t.text "instructions"
+    t.integer "cooking_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["creator_id"], name: "index_recipes_on_creator_id"
+  end
+
+<<<<<<< HEAD
+>>>>>>> 3331ba75f46248b485a6ad8407cb4d017109e074
+  create_table "friend_requests", force: :cascade do |t|
+=======
+  create_table "reviews", force: :cascade do |t|
+    t.float "rating"
+    t.text "comment"
+    t.bigint "recipe_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_reviews_on_recipe_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+  
+  create_table "FriendRequests", force: :cascade do |t|
+>>>>>>> ace24de8b127dcc60febf35b151c9431f592aab1
+    t.boolean "approved"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "requester_id", null: false
+    t.bigint "recipient_id", null: false
+    t.index ["recipient_id"], name: "index_FriendRequests_on_recipient_id"
+    t.index ["requester_id"], name: "index_FriendRequests_on_requester_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "unit"
@@ -51,15 +95,14 @@ ActiveRecord::Schema.define(version: 2021_11_22_180900) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
->>>>>>> 3331ba75f46248b485a6ad8407cb4d017109e074
-  create_table "friend_requests", force: :cascade do |t|
-    t.boolean "approved"
+  create_table "fridge_items", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.date "expiry_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "requester_id", null: false
-    t.bigint "recipient_id", null: false
-    t.index ["recipient_id"], name: "index_friend_requests_on_recipient_id"
-    t.index ["requester_id"], name: "index_friend_requests_on_requester_id"
+    t.index ["ingredient_id"], name: "index_fridge_items_on_ingredient_id"
+    t.index ["user_id"], name: "index_fridge_items_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -95,17 +138,30 @@ ActiveRecord::Schema.define(version: 2021_11_22_180900) do
   end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   add_foreign_key "fridge_items", "ingredients"
   add_foreign_key "fridge_items", "users"
   add_foreign_key "friend_requests", "users", column: "recipient_id"
   add_foreign_key "friend_requests", "users", column: "requester_id"
 >>>>>>> 3331ba75f46248b485a6ad8407cb4d017109e074
+=======
+  add_foreign_key "planned_recipes", "recipes"
+  add_foreign_key "planned_recipes", "users"
+  add_foreign_key "recipes", "users", column: "creator_id"
+  add_foreign_key "reviews", "recipes"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "FriendRequests", "users", column: "recipient_id"
+  add_foreign_key "FriendRequests", "users", column: "requester_id"
+>>>>>>> ace24de8b127dcc60febf35b151c9431f592aab1
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "fridge_items", "ingredients"
   add_foreign_key "fridge_items", "users"
+<<<<<<< HEAD
   add_foreign_key "friend_requests", "users", column: "recipient_id"
   add_foreign_key "friend_requests", "users", column: "requester_id"
+=======
+>>>>>>> ace24de8b127dcc60febf35b151c9431f592aab1
   add_foreign_key "posts", "users"
 end

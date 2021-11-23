@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :find_ingredient, only: %i[show edit update delete]
+  before_action :find_ingredient, only: %i[show edit update destroy]
   def index
     @ingredients = Ingredient.all
   end
@@ -32,8 +32,8 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def delete
-    @seaplane.destroy
+  def destroy
+    @ingredient.destroy
     redirect_to ingredients_path(@ingredient)
   end
 
