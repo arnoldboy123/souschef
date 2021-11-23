@@ -12,7 +12,12 @@ class FridgeItemsController < ApplicationController
 
   def create
     @fridge_item = FridgeItem.new(fridge_params)
-    @fridge_item.save
+    @fridge_item.user = current_user
+    if @fridge_item.save
+      redirect_to fridge_items_path
+    else
+      render :new
+    end
   end
 
   def edit; end
