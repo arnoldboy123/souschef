@@ -2,7 +2,11 @@ class RecipesController < ApplicationController
   before_action :find_recipe, only: %i[show edit update destroy]
 
   def index
-    @recipes = Recipe.all
+    if params[:query].present?
+      @recipes = Recipe.search_by_name_and_description(params[:query])
+    else
+      @recipes = Recipe.all
+    end
   end
 
   def show
