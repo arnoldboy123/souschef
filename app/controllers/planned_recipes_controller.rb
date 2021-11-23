@@ -2,7 +2,7 @@ class PlannedRecipesController < ApplicationController
   before_action :find_planned_recipe, only: %i[show edit update]
 
   def index
-    @planned_recipes = PlannedRecipe.all
+    @planned_recipes = PlannedRecipe.where(user_id: current_user.id)
   end
 
   def show
