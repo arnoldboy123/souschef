@@ -2,11 +2,18 @@ class FridgeItemsController < ApplicationController
   before_action :find_fridge_item, only: [:edit, :update, :destroy]
 
   def index
-    @fridge_item = FridgeItem.all
-    @fridge_item = @fridge_item.where(user_id == current_user.id)
+    @fridge_items = FridgeItem.all
+    @fridge_items = @fridge_items.where(user_id == current_user.id)
   end
 
-  def new; end
+  def new
+    @fridge_item = FridgeItem.new
+  end
+
+  def create
+    @fridge_item = FridgeItem.new(fridge_params)
+    @fridge_item.save
+  end
 
   def edit; end
 
