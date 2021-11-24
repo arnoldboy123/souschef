@@ -1,4 +1,4 @@
 <%= simple_form_for [ fridge_item ] do |f| %>
-  <%= f.association :ingredient, collection: ingredients %>
+  <%= f.association :ingredient, collection: ingredients, as: :radio_buttons %>
   <%= f.submit "Add to fridge", class: "btn btn-primary" %>
 <% end %>

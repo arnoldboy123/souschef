@@ -65,11 +65,6 @@ Recipe.all.each do |recipe|
     recipe_item.ingredient_id = Ingredient.all.sample.id
     recipe_item.recipe_id = recipe.id
     recipe_item.quantity = rand(5)
-
-      # ingredient_id = Ingredient.all.sample.id,
-      # recipe_id = recipe.id,
-      # quantity = rand(5)
-
     recipe_item.save!
   end
 end
