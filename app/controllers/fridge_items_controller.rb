@@ -7,6 +7,12 @@ class FridgeItemsController < ApplicationController
   end
 
   def new
+    if params[:query].present?
+      @ingredients = Ingredient.search_ingredients(params[:query])
+    else
+      @ingredients = Ingredient.all
+    end
+
     @fridge_item = FridgeItem.new
   end
 
