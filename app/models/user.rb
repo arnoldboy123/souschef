@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :recipes, dependent: :destroy, foreign_key: :creator
   has_many :fridge_items, dependent: :destroy
+
+  has_one_attached :photo
 end
