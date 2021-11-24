@@ -1,0 +1,36 @@
+// ------ radio buttons -------
+.form-check-label {
+  color: navy;
+  border: solid 1px navy;
+  border-radius: 5px;
+  padding: 4px 5px;
+  padding-left: 10px;
+  margin: 5px;
+}
+
+input[type="radio"] {
+  color: pink;
+  margin: 3px;
+}
+
+input[type="radio"]:checked + .form-check-label{
+  background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(67,132,199,1) 0%, rgba(0,212,255,1) 100%);
+  color: white;
+  transition: ease 0.3s;
+}
+// ------ radio buttons -------
+
+
+// ------ search bar MyFridge/new buttons -------
+.search-ingredient-btn{
+  border-radius: 5px;
+  border: solid 1px navy;
+  padding: 10px 60px;
+}
+
+.search-ingredient-btn:hover{
+  background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(67,132,199,1) 0%, rgba(0,212,255,1) 100%);
+  color: white;
+  transition: ease 0.3s;
+}
+// ------ search bar MyFridge/new buttons -------
