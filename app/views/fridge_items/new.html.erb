@@ -1,11 +1,15 @@
-<%= form_tag new_fridge_item_path, method: :get do %>
-<%# We don't want the form to go back to fridge_items_path, we want it to change the fridge item selection instead %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find an ingredient"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+
+<div class="form-container">
+  <div class="form text-center">
+    <%= form_tag new_fridge_item_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find an ingredient"
+      %>
+      <%= submit_tag "Search", class: "search-ingredient-btn" %>
+    <% end %>
+  </div>
+</div>
 
 <%= render 'form', fridge_item: @fridge_item, ingredients: @ingredients %>
