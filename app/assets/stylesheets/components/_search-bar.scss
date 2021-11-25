@@ -2,3 +2,25 @@ input#query.form-control {
   border-radius: 10px;
   margin: 15px 0;
 }
+
+// home recipe search bar
+.search-container-home {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXq3ugMG0SGg4EgpyQgYHCifOocKQpuQcE8FKK9yMo0l2eslK4noo4TK5W5sfYj9zJqsE&usqp=CAU');
+  background-size: cover;
+  background-position: center;
+  padding: 90px;
+  width: 100%;
+  flex-grow: 0;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+.search-bar-home {
+  width: 100%;
+  border-radius: 10px;
+  border: solid 1px grey;
+}
+
+
+
+// home recipe search bar
