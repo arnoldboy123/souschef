@@ -7,4 +7,5 @@
 <% @recipe.ingredients.each do |ingredient| %>
 <%= ingredient.name %><br>
 <% end %><br>
+<%= link_to "Mark as cooked!", mark_done_recipe_path(@recipe), class: "btn btn-primary" %>
 <%= link_to "back", recipes_path(@recipes) %>

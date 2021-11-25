@@ -36,6 +36,23 @@ class FridgeItemsController < ApplicationController
     @fridge_item.destroy
   end
 
+  def add
+    item = params[:id]
+    amount = params[:format].to_i
+    fridge_hash
+    if @fridge_items.has_key?(item)
+      ingredient = Ingredient.where(name: item).first
+      in_fridge = FridgeItem.where(ingredient_id: ingredient.id).first
+      new_amount = in_fridge.quantity += amount
+      in_fridge.update(quantity: new_amount)
+    else
+      addition = FridgeItem.new(quantity: amount)
+      addition.user = current_user
+      addition.ingredient = Ingredient.where(name: item).first
+      addition.save!
+    end
+  end
+
   private
 
   def find_fridge_item
@@ -44,5 +61,12 @@ class FridgeItemsController < ApplicationController
 
   def fridge_params
     params.require(:fridge_item).permit(:ingredient_id, :expiry_date, :user_id, :quantity)
+  end
+
+  def fridge_hash
+    @fridge_items = {}
+    FridgeItem.all.select{ |item| item.user = current_user }.each do |item|
+      @fridge_items[item.ingredient.name] = 1
+    end
   end
 end

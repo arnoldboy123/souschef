@@ -1,6 +1,10 @@
 <ul>
 
 <% @shopping_list.each do |shopping, num| %>
-<li><%= "#{shopping} : #{num}"  %></li>
+  <li><%= "#{shopping} : #{num} "  %>
+    <%= link_to add_fridge_item_path(shopping, num) do %>
+      <i class="fas fa-shopping-basket"></i>
+    <% end %>
+  </li>
 <% end %>
 </ul>

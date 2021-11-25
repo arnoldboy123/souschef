@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :recipes
+  resources :recipes do
+    member do
+      get :mark_done
+    end
+  end
   resources :planned_recipes, only: [:create, :index, :edit, :update, :show] do
     collection do
       post :planner
@@ -11,5 +15,9 @@ Rails.application.routes.draw do
       get :shopping_list
     end
   end
-  resources :fridge_items, path: "my_fridge", only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :fridge_items, path: "my_fridge", only: [:index, :new, :create, :edit, :update, :destroy] do
+    member do
+      get :add
+    end
+  end
 end
