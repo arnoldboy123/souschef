@@ -1,15 +1,13 @@
 <h2 class="m-3">My Planner</h2>
 <% @planner_recipes.each do |recipe| %>
   <% if recipe.date > Date.today %>
-  <div class="planner-day">
+  <div class="planner-day" data-controller="planner-day">
     <% @planned_recipe = PlannedRecipe.find(recipe.id) %>
-    <%= recipe.date %>
-    <%= simple_form_for @planned_recipe, method: :patch do |f| %>
-      <%= f.association :recipe, include_blank: true, selected: 0 %>
-      <%= f.submit "Pick recipe", class: "btn btn-primary" %>
+    <%= recipe.date.strftime("%A, %b %d") %>
+    <%= simple_form_for @planned_recipe, method: :patch, html: { data: { planner_day_target: 'form', action: 'change->planner-day#submitForm' }} do |f| %>
+      <%= f.association :recipe, label: false, include_blank: true, selected: 0 %>
     <% end %>
-    <%= recipe.recipe.name %>
   </div>
   <% end %>
-  <%= link_to "Generate shopping list!", shopping_list_planned_recipes_path %>
 <% end %>
+<%= link_to "Generate shopping list!", shopping_list_planned_recipes_path, class: "btn btn-primary m-2" %>

@@ -16,10 +16,25 @@
   </head>
 
   <body>
-  <%= link_to 'Home Page', root_path %>
-  <%= link_to 'My Fridge', fridge_items_path %>
-  <%= link_to 'My Recipes', recipes_path %>
-  <%= link_to 'My planner', planner_planned_recipes_path %>
+    <div class="pos-f-t mb-4">
+      <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span><i class="fas fa-bars"></i></span>
+        </button>
+      </nav>
+      <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <h4 class="text-white">Sous Chef</h4>
+          <ul>
+          <li class="text-muted"><%= link_to 'Home', root_path %></li>
+          <li class="text-muted"><%= link_to 'My Fridge', fridge_items_path %></li>
+          <li class="text-muted"><%= link_to 'My Recipes', recipes_path %></li>
+          <li class="text-muted"><%= link_to 'My planner', planner_planned_recipes_path %></li>
+          <li class="text-muted"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <%= yield %>
     </div>
