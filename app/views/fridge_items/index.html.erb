@@ -2,16 +2,15 @@
   <div class="row">
     <!-- 👍 -->
     <div class="col-10">
-      <div class="card bg-light" >
-<h2 class= "fridge" >My fridge</h2>
-<ul>
-<% @fridge_items.each do |item| %>
-  <li class= "fridge"><%= item.ingredient.name %></li>
-<% end %>
-</ul>
+      <div class="card-fridge" >
+        <h2 class= "fridge" >My fridge</h2>
+        <ul>
+        <% @fridge_items.each do |item| %>
+          <li class= "fridge"><%= item.ingredient.name %></li>
+        <% end %>
+        </ul>
 
-<%= link_to "add a new ingredient to fridge", new_fridge_item_path %>
-
+        <%= link_to "add a new ingredient to fridge", new_fridge_item_path %>
       </div>
     </div>
   </div>
