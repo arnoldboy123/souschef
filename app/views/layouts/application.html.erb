@@ -22,18 +22,19 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="fas fa-bars"></i></span>
         </button>
-        <h4 class="text-white">Sous Chef</h4>
+        <div id="logo">
+          <%= image_tag("SousChef_Transparent.png", height: "144") %>
+        </div>
       </nav>
       <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-nav-collpse p-4">
           <ul>
-          <li class="text-muted"><%= link_to 'Home', root_path %></li>
-          <li class="text-muted"><%= link_to 'My Fridge', fridge_items_path %></li>
-          <li class="text-muted"><%= link_to 'My Recipes', recipes_path %></li>
-          <li class="text-muted"><%= link_to 'My Planner', planner_planned_recipes_path %></li>
-          <li class="text-muted"><%= link_to 'My Shopping List', shopping_list_planned_recipes_path %></li>
-          <li class="text-muted"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-
+            <li class="text-muted"><%= link_to 'Home', root_path %></li>
+            <li class="text-muted"><%= link_to 'My Fridge', fridge_items_path %></li>
+            <li class="text-muted"><%= link_to 'My Recipes', recipes_path %></li>
+            <li class="text-muted"><%= link_to 'My Planner', planner_planned_recipes_path %></li>
+            <li class="text-muted"><%= link_to 'My Shopping List', shopping_list_planned_recipes_path %></li>
+            <li class="text-muted"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
       </div>

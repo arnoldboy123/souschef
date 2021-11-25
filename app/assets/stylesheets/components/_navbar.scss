@@ -3,6 +3,7 @@
   border-top-left-radius: 20px;
   transition: ease 0.3s;
   height: 30px;
+  position: relative;
 }
 
 .bg-nav-collpse {
@@ -16,6 +17,12 @@
 
 li {
   padding-top: 10px;
+}
+
+#logo {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .header-block {
