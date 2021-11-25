@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :creator, class_name: 'User'
-  has_many :recipe_items
+  has_one_attached :photo
+  has_many :recipe_items, dependent: :destroy
   has_many :planned_recipes
   has_many :reviews
   has_many :ingredients, through: :recipe_items
@@ -14,6 +15,9 @@ class Recipe < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,
     against: [ :name, :description ],
+    associated_against: {
+      ingredients: [ :name ]
+    },
     using: {
       tsearch: { prefix: true }
     }

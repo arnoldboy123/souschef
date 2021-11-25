@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_11_25_092555) do
     t.date "expiry_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity"
     t.index ["ingredient_id"], name: "index_fridge_items_on_ingredient_id"
     t.index ["user_id"], name: "index_fridge_items_on_user_id"
   end

@@ -47,6 +47,32 @@ class PlannedRecipesController < ApplicationController
     @all_recipes = Recipe.where(creator: current_user)
   end
 
+  def shopping_list
+    @meals = PlannedRecipe.all.select{ |meal| meal.date > Date.today }
+    shopping_list = {}
+    @meals.each do |meal|
+      meal.recipe.recipe_items.each do |item|
+        if shopping_list.has_key?(item.ingredient.name)
+          shopping_list[item.ingredient.name] += item.quantity
+        else
+          shopping_list[item.ingredient.name] = item.quantity
+        end
+      end
+    end
+    @shopping_list = shopping_list
+    @fridge_items = {}
+    FridgeItem.all.select{ |item| item.user = current_user }.each do |item|
+      @fridge_items[item.ingredient.name] = 1
+    end
+    @shopping_list.each do |shopping, _vol|
+    # # @fridge_items.each do |item, num|
+      if @fridge_items.has_key?(shopping)
+        @shopping_list[shopping] -= @fridge_items[shopping]
+      end
+    end
+    return @shopping_list
+  end
+
   private
 
   def find_planned_recipe

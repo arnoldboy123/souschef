@@ -47,9 +47,26 @@ puts "adding some recipes"
     description: Faker::Lorem.sentence,
     creator: User.first,
     instructions: Faker::Lorem.sentence,
-    cooking_time: Faker::Number.number(digits: 2)
+    cooking_time: rand(60)
   )
+
   puts @recipe.name
   @recipe.save!
 end
 puts "Enjoy!"
+
+sleep(0.5)
+
+puts "add some ingredients to recipes"
+
+Recipe.all.each do |recipe|
+  3.times do
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = Ingredient.all.sample.id
+    recipe_item.recipe_id = recipe.id
+    recipe_item.quantity = rand(5)
+    recipe_item.save!
+  end
+end
+# We already have Recipes, We already have ingredients
+# So we just need to link those two together for each recipes

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     collection do
       post :planner
       get :planner
+      get :shopping_list
     end
   end
   resources :fridge_items, path: "my_fridge", only: [:index, :new, :create, :edit, :update, :destroy]

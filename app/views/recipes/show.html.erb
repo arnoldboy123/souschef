@@ -3,5 +3,8 @@
 <h5><%= @recipe.name %></h5>
 <p><%= @recipe.cooking_time %>min</p>
 <%= @recipe.instructions %><br>
-<%= @recipe.description %><br>
+<%= @recipe.description %><br><br>
+<% @recipe.ingredients.each do |ingredient| %>
+<%= ingredient.name %><br>
+<% end %><br>
 <%= link_to "back", recipes_path(@recipes) %>
