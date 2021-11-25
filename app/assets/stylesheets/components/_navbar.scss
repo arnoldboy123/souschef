@@ -1,6 +1,46 @@
-.navbar-lewagon {
+.navbar-souschef {
   justify-content: space-between;
-  background: white;
+  border-top-left-radius: 20px;
+  transition: ease 0.3s;
+  height: 30px;
+}
+
+.bg-nav-collpse {
+  border-bottom-right-radius: 20px;
+}
+
+.navbar-toggler {
+  color: white !important;
+  font-size: 17px;
+}
+
+li {
+  padding-top: 10px;
+}
+
+.header-block {
+    z-index: 1;
+    padding: 24px;
+    background-color: orange;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: 1px 1px 5px gray;
+    background-image: url('https://designmodo.com/wp-content/uploads/2015/07/11-40-Food-Icons-PSD-by-Graphics-Bay-Team.jpg');
+    background-blend-mode: darken;
+
+}
+
+a {
+  color: white !important;
+  opacity: 1;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black !important;
+  opacity: 1;
+  text-decoration: none;
 }
 
 .navbar-lewagon .navbar-collapse {

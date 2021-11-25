@@ -26,11 +26,30 @@ input[type="radio"]:checked + .form-check-label{
   border-radius: 5px;
   border: solid 1px navy;
   padding: 10px 60px;
+  background-color: transparent;
 }
 
 .search-ingredient-btn:hover{
-  background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(67,132,199,1) 0%, rgba(0,212,255,1) 100%);
+  background: linear-gradient(313deg, rgba(199,140,67,1) 0%, rgba(255,51,0,1) 0%, rgba(255,134,0,1) 67%);
   color: white;
   transition: ease 0.3s;
 }
 // ------ search bar MyFridge/new buttons -------
+
+// ------ home buttons -------
+.search-ingredient-btn-home{
+  border-radius: 5px;
+  color: black;
+  border: none;
+  padding: 10px 35px;
+  background-color: white;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.search-ingredient-btn-home:hover{
+  transition: ease 0.3s;
+  padding: 10px 39px;
+  margin-top: 20px;
+}
+// ------ home buttons -------
