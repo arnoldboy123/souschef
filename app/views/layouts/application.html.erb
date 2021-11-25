@@ -9,18 +9,23 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+
   </head>
 
   <body>
+  <div class="header-block">
     <div class="pos-f-t mb-4">
-      <nav class="navbar navbar-dark bg-dark">
+      <nav class="navbar navbar-dark navbar-souschef">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="fas fa-bars"></i></span>
         </button>
+        <h4 class="text-white">Sous Chef</h4>
       </nav>
       <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-          <h4 class="text-white">Sous Chef</h4>
+        <div class="bg-nav-collpse p-4">
           <ul>
           <li class="text-muted"><%= link_to 'Home', root_path %></li>
           <li class="text-muted"><%= link_to 'My Fridge', fridge_items_path %></li>
@@ -28,11 +33,13 @@
           <li class="text-muted"><%= link_to 'My Planner', planner_planned_recipes_path %></li>
           <li class="text-muted"><%= link_to 'My Shopping List', shopping_list_planned_recipes_path %></li>
           <li class="text-muted"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+
           </ul>
         </div>
       </div>
     </div>
-    <div class="container">
+  </div>
+    <div class="container w-100 p-0">
       <%= yield %>
     </div>
   </body>
