@@ -1,6 +1,15 @@
-<ul>
-
-<% @shopping_list.each do |shopping, num| %>
-<li><%= "#{shopping} : #{num}"  %></li>
-<% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <!-- 👍 -->
+    <div class="col-10" id=shoping>
+      <div class="card bg-light">
+      <h2 class="shopping-lst"> Shopping List </h2>
+        <ul>
+          <% @shopping_list.each do |shopping, num| %>
+          <li class="shopping-lst"><%= "#{shopping} : #{num}"  %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
