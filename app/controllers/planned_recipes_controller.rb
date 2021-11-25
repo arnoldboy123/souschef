@@ -40,8 +40,12 @@ class PlannedRecipesController < ApplicationController
     today = Date.today
     i = 1
     days.to_i.times do
-      PlannedRecipe.create!(date: today + i, user: current_user, recipe: Recipe.last)
-      today += 1.day
+      if PlannedRecipe.create!(date: today + i, user: current_user, recipe: Recipe.last)
+        today += 1.day
+      else
+        flash[:alert] = 'You already have a plan for that day!'
+        redirect_to 'planned_recipes_planner_path'
+      end
     end
     @planner_recipes = PlannedRecipe.order(:date)
     @all_recipes = Recipe.where(creator: current_user)
