@@ -6,7 +6,13 @@
       <h2 class="shopping-lst"> Shopping List </h2>
         <ul>
           <% @shopping_list.each do |shopping, num| %>
-          <li class="shopping-lst"><%= "#{shopping} : #{num}"  %></li>
+            <% if num > 0 %>
+              <li data-controller="shopping-list" data-shopping-list-target='item'><%= "#{shopping} : #{num} "  %>
+                <%= link_to add_fridge_item_path(shopping, num) do %>
+                  <i class="fas fa-shopping-basket" data-shopping-list-target='button', data-action='click->shopping-list#removeItem'></i>
+                <% end %>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       </div>
