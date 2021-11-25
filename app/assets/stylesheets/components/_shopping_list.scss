@@ -1,12 +1,29 @@
-.shopping-lst {
+#shopping {
   font-family: 'Architects Daughter', cursive;
   width: 100%;
   // border-radius: 5px;
-  background: rgba(255, 246, 246, 0.7);
+  // background: rgba(255, 246, 246, 0.7);
   position: relative;
   // height: 230px;
   margin: 7% auto 15px auto;
 }
-.shopping-lst li {
-  font-size: 55px ;
+
+// #shopping li {
+//   font-size: 24px ;
+// }
+
+.card {
+  padding: 8px;
 }
+
+h2 {
+  font-family: 'Architects Daughter', cursive;
+}
+
+.fa-shopping-basket {
+  color: rgb(34, 0, 158);
+}
+
+// #shopping form {
+//   font-size: 24px;
+// }
