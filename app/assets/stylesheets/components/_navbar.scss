@@ -5,12 +5,17 @@
   height: 30px;
 }
 
+#logo-img{
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+
 .bg-nav-collpse {
   border-bottom-right-radius: 20px;
 }
 
 .navbar-toggler {
-  color: white !important;
+  color: black !important;
   font-size: 20px;
   font-weight: bold;
 }
@@ -19,20 +24,19 @@ li {
   padding-top: 10px;
 }
 
-.header-block {
-    z-index: 1;
-    padding: 24px;
-    background-color: rgba(133, 93, 8, 0.5);
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    box-shadow: 1px 1px 5px gray;
-    background-image: url('https://designmodo.com/wp-content/uploads/2015/07/11-40-Food-Icons-PSD-by-Graphics-Bay-Team.jpg');
-    background-blend-mode: darken;
-
-}
+// .header-block {
+//     z-index: 1;
+//     padding: 24px;
+//     background-color: rgba(63, 56, 41, 0.5);
+//     border-bottom-right-radius: 20px;
+//     border-bottom-left-radius: 20px;
+//     box-shadow: 1px 1px 5px gray;
+//     background-image: url('https://designmodo.com/wp-content/uploads/2015/07/11-40-Food-Icons-PSD-by-Graphics-Bay-Team.jpg');
+//     background-blend-mode: darken;
+// }
 
 a {
-  color: white !important;
+  color: black !important;
   opacity: 1;
   font-size: 20px;
   text-decoration: none;

@@ -1,28 +1,40 @@
+<%# style in navabar.scss %>
+<div class="text-center ", id="logo-img">
+  <%= link_to (image_tag("logo.png", alt:"AirSea&Sea", style:"width: 150px")), root_path%>
+</div>
 
-<div class="d-flex flex-column align-items-center">
-<div id="carouselhomepage" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100 h-200" src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100 h-200" src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=768,574" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100 h-200" src="https://greenhealthycooking.com/wp-content/uploads/2017/12/Clean-Eating-Meal-Plan.jpg" alt="Third slide">
+<div class="bg-color-recipe">
+  <div class="d-flex flex-column align-items-center text-center">
+    <div class="search-container d-flex flex-column" id="recipe">
+      <h3 class="text-center text-white align-items-start">Start creating your favourite recipes</h3>
+      <%# <%= link_to "", new_recipe_path, class: "stretched-link"%>
     </div>
   </div>
 </div>
+
+<div class="bg-color-fridge">
+  <div class="d-flex flex-column align-items-center text-center">
+    <div class="search-container d-flex flex-column" id="fridge">
+      <h3 class="text-center text-white align-items-start">Keep record of your ingredients and bla bla</h3>
+      <%# <%= link_to "", fridge_items_path, class: "stretched-link"%>
+    </div>
+  </div>
 </div>
 
+<div class="bg-color-friend">
+  <div class="d-flex flex-column align-items-center text-center">
+    <div class="search-container d-flex flex-column" id="friend">
+      <h3 class="text-center text-white align-items-start">Share your recipe with your friends..maybe</h3>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'My Fridge :)', fridge_items_path %>
-
-  <h3 class="text-center">Not sure what to cook?</h3>
+  <h3 class="text-center mt-5">Not sure what to cook?</h3>
+  <h5 class="text-center mt-5">Plan your meals based on the ingredients you have</h5>
 
 <div class="d-flex flex-column align-items-center text-center">
-  <div class="search-container-home d-flex flex-column">
-    <h3 class="text-center text-white align-items-start">Plan your meals</h3>
+  <div class="search-container d-flex flex-column" id="planner">
+    <h5 class="text-center text-white align-items-start"></h5>
     <form action="/planned_recipes/planner" method="post" class="recipe-form-home">
       <div><input type="integer" name="days" class="search-bar-home" placeholder="Days"></div>
       <div class="p-2"><input type="submit", class="search-ingredient-btn-home"></div>

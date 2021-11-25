@@ -7,3 +7,18 @@
   max-width: 500px;
   max-height: 300px;
 }
+
+#caruselimg {
+  z-index: -1;
+}
+
+.carousel-caption {
+    z-index: 1;
+}
+
+.trickcenter {
+    position: fixed;
+    top: 84%; // 50% for perfect centering
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
