@@ -5,10 +5,8 @@
     <% @planned_recipe = PlannedRecipe.find(recipe.id) %>
     <%= recipe.date %>
     <%= simple_form_for @planned_recipe, method: :patch, html: { data: { planner_day_target: 'form', action: 'change->planner-day#submitForm' }} do |f| %>
-      <%= f.association :recipe, include_blank: true, selected: 0 %>
-      <%= f.submit "Pick recipe", class: "btn btn-primary" %>
+      <%= f.association :recipe, label: false, include_blank: true, selected: 0 %>
     <% end %>
-    <p class="d-none" data-planner-day-target="meal"><%= recipe.recipe.name %></p>
   </div>
   <% end %>
 <% end %>
