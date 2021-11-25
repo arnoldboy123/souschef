@@ -9,15 +9,18 @@
 
 <%= link_to "Add Recipe", new_recipe_path %>
 
-<div class="row justify-content-between mt-3" style="width: 18rem;">
-  <% @recipes.each do |recipe| %>
-  <%= image_tag("cake.jpg", class:"card-img-top", alt: "an image of a recipe") %>
-    <div class="card-body">
-      <h5 class="card-title"><%= recipe.name %></h5>
-      <p class="card-text"><%= recipe.instructions %></p>
-      <%= recipe.cooking_time %>
-      <p class="card-text"><%= recipe.description %></p>
-      <%= link_to "view details", recipe_path(recipe), class: "btn btn-primary" %>
+
+
+    <div class="content">
+      <div class="cards">
+      <% @recipes.each do |recipe| %>
+        <div class="card text-white">
+          <h5 class="card-title"><%= recipe.name %></h5>
+           <p class="card-text"><%= recipe.instructions %></p>
+           <%= recipe.cooking_time %>
+           <p class="card-text"><%= recipe.description %></p>
+           <%= link_to "view details", recipe_path(recipe), class: "btn btn-primary" %>
+        </div>
+        <% end %>
+        </div>
     </div>
-  <% end %>
-</div>
