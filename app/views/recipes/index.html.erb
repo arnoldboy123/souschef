@@ -9,18 +9,19 @@
 
 <%= link_to "Add Recipe", new_recipe_path %>
 
-
-
-    <div class="content">
-      <div class="cards">
-      <% @recipes.each do |recipe| %>
-        <div class="card text-white">
-          <h5 class="card-title"><%= recipe.name %></h5>
-           <p class="card-text"><%= recipe.instructions %></p>
-           <%= recipe.cooking_time %>
-           <p class="card-text"><%= recipe.description %></p>
-           <%= link_to "view details", recipe_path(recipe), class: "btn btn-primary" %>
-        </div>
-        <% end %>
-        </div>
+<div class="content">
+  <div class="cards">
+  <% @recipes.each do |recipe| %>
+    <div class="card text-white">
+      <h5 class="card-title"><%= recipe.name %></h5>
+      <p class="card-text"><%= recipe.cooking_time %> mins cooking time</p>
+      <%= link_to "", recipe_path(recipe), class: "stretched-link" %>
+      <ul class="list-inline">
+      <% recipe.ingredients.each do |ingredient| %>
+        <li class="list-inline-item"><%= ingredient.name %></li>
+      <% end %>
+      </ul>
     </div>
+    <% end %>
+    </div>
+</div>
