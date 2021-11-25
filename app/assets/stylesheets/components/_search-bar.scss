@@ -4,8 +4,7 @@ input#query.form-control {
 }
 
 // home recipe search bar
-.search-container-home {
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXq3ugMG0SGg4EgpyQgYHCifOocKQpuQcE8FKK9yMo0l2eslK4noo4TK5W5sfYj9zJqsE&usqp=CAU');
+.search-container {
   background-size: cover;
   background-position: center;
   padding: 90px;
@@ -17,12 +16,53 @@ input#query.form-control {
   max-height: 600px;
 }
 
+#text-logo {
+  font-family: "Lobster";
+}
+
+#recipe {
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://www.tavolartegusto.it/wp/wp-content/uploads/2019/07/Calamarata-Ricetta-Calamarata-napoletana-1-1.jpg');
+    width: 90%;
+}
+
+#planner {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXq3ugMG0SGg4EgpyQgYHCifOocKQpuQcE8FKK9yMo0l2eslK4noo4TK5W5sfYj9zJqsE&usqp=CAU');
+  width: 90%;
+}
+
+#fridge {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://i0.wp.com/www.westside.social/wp-content/uploads/2017/12/food-background-food-concept-with-various-tasty-fresh-ingredients-for-cooking-italian-food-ingredients-view-from-above-with-copy-space_1220-1491-2-e1513108150131.jpg?ssl=1');
+  width: 90%;
+}
+
+#friend {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://media.istockphoto.com/photos/diverse-friends-cooking-together-picture-id1313118193?k=20&m=1313118193&s=170667a&w=0&h=GuMRFkDK_iMYDm3Yby57Z-Tw9HkUHMLGcEN6yQMV4tc=');
+  width: 90%;
+}
+
+
+.bg-color-recipe {
+  margin-top: 40px;
+  background: linear-gradient(180deg, rgba(179, 80, 58, 0.8) 58%, rgba(255,134,0,0) 58%);
+  width: 100%;
+}
+
+.bg-color-friend {
+  margin-top: 40px;
+  background: linear-gradient(180deg,rgba(105, 131, 146,0.8) 58%, rgba(255,134,0,0) 58%);
+  width: 100%;
+}
+
+.bg-color-fridge {
+  margin-top: 40px;
+  background: linear-gradient(180deg,  rgba(118,218,13,0.7) 50%,  rgba(0,255,22,0) 50%);
+  width: 100%;
+}
+
 .search-bar-home {
   width: 100%;
   border-radius: 10px;
   border: solid 1px grey;
 }
-
-
 
 // home recipe search bar
