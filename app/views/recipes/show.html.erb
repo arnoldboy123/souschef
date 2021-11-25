@@ -1,11 +1,28 @@
 
-<%= image_tag("cake.jpg", width: "400px", heigth: '200px', alt: "an image of a recipe") %>
-<h5><%= @recipe.name %></h5>
-<p><%= @recipe.cooking_time %>min</p>
-<%= @recipe.instructions %><br>
-<%= @recipe.description %><br><br>
-<% @recipe.ingredients.each do |ingredient| %>
-<%= ingredient.name %><br>
-<% end %><br>
-<%= link_to "Mark as cooked!", mark_done_recipe_path(@recipe), class: "btn btn-primary" %>
-<%= link_to "back", recipes_path(@recipes) %>
+<div class="show-page-container">
+  <div class="banner-show"></div>
+    <%= image_tag("cake.jpg", width: "400px", heigth: '200px', alt: "an image of a recipe")%>
+  </div>
+    <h5 class="text-center my-5"><%= @recipe.name %></h5>
+    <p class="text-center mb-5"><%= @recipe.description %></p>
+    <div class="show-review d-flex justify-content-between">
+      <h6 class="pl-10">Review 4/5</h6>
+      <p><%= @recipe.cooking_time %>min</p>
+    </div>
+    <div class="show-review-ing d-flex flex-column pb-4">
+      <h5 class="text-center pb-5">Ingredients</h5>
+      <% @recipe.ingredients.each do |ingredient| %>
+        <p class="text-center"><strong><%= ingredient.name %></strong></p>
+      <% end %>
+    </div>
+    <div class="show-review-ing d-flex flex-column">
+      <h5 class="text-center my-3">Instructions</h5>
+      <p class="text-center mt-3 mb-10"><%= @recipe.instructions %></p>
+    </div>
+  </div>
+</div>
+
+<div class="button-show d-flex flex-column justify-content-around">
+  <%= link_to "Mark as cooked!", mark_done_recipe_path(@recipe), class: "btn btn-showpage" %>
+  <%= link_to "Back", recipes_path(@recipes), class: "btn btn-showpage" %>
+</div>
