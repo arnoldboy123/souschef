@@ -38,7 +38,7 @@ class FridgeItemsController < ApplicationController
 
   def add
     item = params[:id]
-    amount = params[:format].to_i
+    amount = params["fridge_item"]["quantity"].to_i
     fridge_hash
     if @fridge_items.has_key?(item)
       ingredient = Ingredient.where(name: item).first
@@ -51,6 +51,7 @@ class FridgeItemsController < ApplicationController
       addition.ingredient = Ingredient.where(name: item).first
       addition.save!
     end
+    redirect_to '/planned_recipes/shopping_list'
   end
 
   private
