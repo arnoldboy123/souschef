@@ -13,11 +13,12 @@
 <div class="content">
   <div class="cards">
   <% @recipes.each do |recipe| %>
-    <div class="card text-white">
-      <h5 class="card-title"><%= recipe.name %></h5>
-      <p class="card-text"><%= recipe.cooking_time %> mins cooking time</p>
+    <div class="recipe-card">
       <%= link_to "", recipe_path(recipe), class: "stretched-link" %>
-      <ul class="list-inline">
+      <%= cl_image_tag recipe.photo.key, class: "rounded index-img", width: "100%", height: '200px', alt: "an image of a recipe" %>
+      <h5 class="card-title pt-4 pb-0 text-center"><%= recipe.name %></h5>
+      <p class="card-text text-center"><%= recipe.cooking_time %> mins</p>
+      <ul class="list-inline text-center">
       <% recipe.ingredients.each do |ingredient| %>
         <li class="list-inline-item"><%= ingredient.name %></li>
       <% end %>
