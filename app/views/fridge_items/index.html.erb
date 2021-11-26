@@ -1,16 +1,15 @@
 <div class="container">
   <div class="row">
-    <!-- 👍 -->
-    <div class="col-10">
-      <div class="card-fridge" >
-        <h2 class= "fridge" >My fridge</h2>
+    <div class="col-11" id="fridge">
+      <div class="card-fridge bg-light" >
+        <h2>My fridge</h2>
         <ul>
         <% @fridge_items.each do |item| %>
           <li class= "fridge"><%= item.ingredient.name %></li>
         <% end %>
         </ul>
 
-        <%= link_to "add a new ingredient to fridge", new_fridge_item_path %>
+        <%= link_to "Add to fridge", new_fridge_item_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>

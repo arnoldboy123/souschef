@@ -1,12 +1,14 @@
-.fridge {
-  font-family: 'Architects Daughter', cursive;
+#fridge {
+  font-family: 'Mulish', serif;
   width: 100%;
   // border-radius: 5px;
-  background: rgba(255, 246, 246, 0.7);
+  // background: rgba(255, 246, 246, 0.7);
   position: relative;
   // height: 230px;
   margin: 7% auto 15px auto;
 }
-.fridge li {
-  font-size: 55px ;
+
+.card-fridge {
+  font-size: 24px ;
+  padding: 10px;
 }
