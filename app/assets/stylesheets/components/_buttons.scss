@@ -76,6 +76,7 @@ input[type="radio"]:checked + .form-check-label{
   border-radius: 10px;
   margin-bottom: 20px;
   padding:7px 50px;
+  margin-top: 20px;
   color: black!important;
   font-size: 14px;
   opacity: 0.7!important;
@@ -85,4 +86,26 @@ input[type="radio"]:checked + .form-check-label{
   opacity: 1;
 }
 
+
 // ----- recipe show page buttons -------
+
+// ----- general page buttons -------
+.general-button-blue {
+  background: linear-gradient(167deg, rgba(2,0,36,1) 0%, rgba(67,132,199,1) 0%, rgba(0,212,255,1) 100%);
+  color: white;
+  transition: ease 0.3s;
+  padding: 6px 50px;
+  border: none;
+  border-radius: 10px;
+}
+
+.general-button-green {
+  background:linear-gradient(132deg, #72ff71 0%, #16A085 100%);
+  color: white;
+  transition: ease 0.3s;
+  padding: 6px 50px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  color: white;
+}
