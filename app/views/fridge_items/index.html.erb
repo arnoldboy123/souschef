@@ -8,7 +8,7 @@
       <ul>
         <% @fridge_items.each do |item| %>
         <div class=" " >
-          <li class= "fridge m-1 p-0"><%= item.ingredient.name %></li>
+          <li class= "fridge m-1 p-0"><%= item.ingredient.name %> - <%= item.quantity %></li>
         </div>
         <% end %>
         </ul>
