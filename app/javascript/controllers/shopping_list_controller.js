@@ -2,10 +2,11 @@ import { Controller } from "stimulus"
 
 export default class extends Controller {
 
-  static targets = ["item", "button"]
+  static targets = ["item", "button", "form"]
 
   removeItem() {
-    console.log(this.itemTarget);
+    event.preventDefault();
+    this.formTarget.submit();
     this.itemTarget.remove();
   }
 }

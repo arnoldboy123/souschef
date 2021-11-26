@@ -4,14 +4,16 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-11" id="fridge">
-      <ul>
+    <div class="col-11" class="fridge">
+      <div class="card-fridge bg-light" >
+        <ul>
         <% @fridge_items.each do |item| %>
         <div class=" " >
           <li class= "fridge"><%= item.ingredient.name %></li>
         </div>
         <% end %>
         </ul>
+      </div>
     </div>
   </div>
 </div>

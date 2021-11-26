@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "destroy all recipes"
+PlannedRecipe.destroy_all
 Recipe.destroy_all
 puts "killing current users"
 User.destroy_all

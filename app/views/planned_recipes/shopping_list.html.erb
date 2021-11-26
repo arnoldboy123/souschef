@@ -9,12 +9,12 @@
           <% @shopping_list.each do |shopping, num| %>
             <% if num > 0 %>
             <% @fridge_item = FridgeItem.new %>
-            <div class="d-flex" data-controller="shopping-list" data-shopping-list-target='item'>
-              <div class="row mb-2 mt-2">
-                <%= form_for @fridge_item, url: add_fridge_item_path(shopping), method: :get do |f| %>
+            <div class="d-flex" data-controller="shopping-list">
+              <div class="row mb-2 mt-2" data-shopping-list-target='item'>
+                <%= form_for @fridge_item, url: add_fridge_item_path(shopping), method: :get, html: { data: {shopping_list_target: 'form'}} do |f| %>
                   <%= shopping %> : <%= f.text_field :quantity, as: :integer, class: 'col-2', placeholder: num %>
-                  <%= button_tag class: 'border-none', type: 'submit', html: { data: {shopping_list_target: 'button', action: 'click->shopping_list#removeItem'}} do %>
-                    <i class="fas fa-shopping-cart" data-shopping-list-target='button', data-action='click->shopping-list#removeItem' aria-hidden="true"></i>
+                  <%= button_tag class: 'border-none', type: 'submit' do %>
+                    <i class="fas fa-shopping-cart" data-shopping-list-target='button' data-action='click->shopping-list#removeItem'></i>
                   <% end %>
                 <% end %>
               </div>
