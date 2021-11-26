@@ -44,16 +44,22 @@ puts "adding some recipes"
 50.times do
   @recipe = Recipe.new(
     name: Faker::Food.unique.dish,
-    description: Faker::Lorem.sentence,
+    description: ["This is a healthy and nutritious recipe", "This is a tasty recipe"].sample,
     creator: User.first,
-    instructions: Faker::Lorem.sentence,
+    instructions: ["Wash the vegetables and cook it in medium heat for 30 minutes, gently simmer for another 10",
+                   "Warning: wash your hands thoroughly after touching raw meat",
+                   "Defrost one day before"].sample,
     cooking_time: rand(60)
   )
 
   puts @recipe.name
   @recipe.save!
 
-  image_url = "https://source.unsplash.com/random?sig=#{rand(1..10)}/&food/800x600"
+  if @recipe.name.ascii_only?
+    image_url = "https://source.unsplash.com/800x600/?#{@recipe.name}"
+  else
+    image_url = "https://source.unsplash.com/800x600/?food"
+  end
   file = URI.open(image_url)
   @recipe.photo.attach(io: file, filename: "#{@recipe.name.gsub(" ", "-")}.jpeg", content_type: 'image/jpeg')
 
