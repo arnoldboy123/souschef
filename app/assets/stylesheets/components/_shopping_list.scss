@@ -1,27 +1,36 @@
 #shopping {
-  font-family: 'Architects Daughter', cursive;
   width: 100%;
   // border-radius: 5px;
   // background: rgba(255, 246, 246, 0.7);
   position: relative;
   // height: 230px;
   margin: 7% auto 15px auto;
+  display: flex;
 }
 
 // #shopping li {
 //   font-size: 24px ;
 // }
 
-.card {
-  padding: 8px;
+input#fridge_item_quantity {
+  border-radius: 10px;
+  border: 1px solid grey;
+  }
+
+.border-none {
+  background: transparent;
+  border: none;
+  font-size: 13px;
 }
+
 
 h2 {
   font-family: 'Lobster', serif;
 }
 
-.fa-shopping-basket {
-  color: rgb(34, 0, 158);
+.fa-shopping-cart {
+  color: rgba(67,132,199,1) ;
+  font-size: 17px;
 }
 
 // #shopping form {
