@@ -1,13 +1,21 @@
-<h2 class="m-3">My Planner</h2>
-<% @planner_recipes.each do |recipe| %>
-  <% if recipe.date > Date.today %>
-  <div class="planner-day" data-controller="planner-day">
-    <% @planned_recipe = PlannedRecipe.find(recipe.id) %>
-    <%= recipe.date.strftime("%A, %b %d") %>
-    <%= simple_form_for @planned_recipe, method: :patch, html: { data: { planner_day_target: 'form', action: 'change->planner-day#submitForm' }} do |f| %>
-      <%= f.association :recipe, label: false, include_blank: true, selected: 0 %>
+<h2 class="mt-5 text-center" style="font-family: 'Lobster'">My Planner</h2>
+
+<div class="content-planner">
+  <div class="planner-card">
+    <% @planner_recipes.each do |recipe| %>
+      <% if recipe.date > Date.today %>
+      <div class="planner-day mb-3" data-controller="planner-day">
+        <% @planned_recipe = PlannedRecipe.find(recipe.id) %>
+        <p class="date-planner p-2"><%= recipe.date.strftime("%A, %b %d") %></p>
+        <%= simple_form_for @planned_recipe, method: :patch, html: { data: { planner_day_target: 'form', action: 'change->planner-day#submitForm' }} do |f| %>
+          <%= f.association :recipe, label: false, include_blank: true, selected: 0 %>
+        <% end %>
+      </div>
+      <% end %>
     <% end %>
   </div>
-  <% end %>
-<% end %>
-<%= link_to "Generate shopping list!", shopping_list_planned_recipes_path, class: "btn btn-primary m-2" %>
+</div>
+
+<div class="text-center text-small">
+  <p><small><%= link_to "Generate shopping list!", shopping_list_planned_recipes_path, class: "btn-myplanner" %><small></p>
+</div>
