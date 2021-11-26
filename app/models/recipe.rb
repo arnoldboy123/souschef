@@ -2,7 +2,7 @@ class Recipe < ApplicationRecord
   belongs_to :creator, class_name: 'User'
   has_one_attached :photo
   has_many :recipe_items, dependent: :destroy
-  has_many :planned_recipes
+  has_many :planned_recipes, dependent: :destroy
   has_many :reviews
   has_many :ingredients, through: :recipe_items
 
