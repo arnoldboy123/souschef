@@ -4,9 +4,10 @@ export default class extends Controller {
 
   static targets = ["item", "button", "form"]
 
-  removeItem() {
+  removeItem(event) {
     event.preventDefault();
     this.formTarget.submit();
-    this.itemTarget.remove();
+    // this.itemTarget.remove();
+    // console.log("hello");
   }
 }
