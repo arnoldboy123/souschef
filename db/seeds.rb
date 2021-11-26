@@ -52,6 +52,11 @@ puts "adding some recipes"
 
   puts @recipe.name
   @recipe.save!
+
+  image_url = "https://source.unsplash.com/random?sig=#{rand(1..10)}/&food/800x600"
+  file = URI.open(image_url)
+  @recipe.photo.attach(io: file, filename: "#{@recipe.name.gsub(" ", "-")}.jpeg", content_type: 'image/jpeg')
+
 end
 puts "Enjoy!"
 

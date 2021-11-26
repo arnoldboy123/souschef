@@ -26,9 +26,21 @@
 
 .card {
   justify-content: space-between;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://www.spadellandia.it/upload/ricette/Spiedini-alle-tre-carni-con-verdure_4510.jpg');
+  // background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://source.unsplash.com/random?food');
   background-size: cover;
   background-position: center;
   padding: 20px;
   border-radius: 10px;
+}
+
+.card-text {
+  font-size: 12px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.recipe-card {
+  border: solid 1px rgb(219, 219, 219);
+  border-radius: 5px;
+  position: relative;
 }
