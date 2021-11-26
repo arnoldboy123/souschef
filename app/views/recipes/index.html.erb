@@ -1,14 +1,24 @@
-<div class="recipe pb-0 pt-1">
-  <%= form_tag recipes_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a recipe"
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
-  <%= link_to "Add Recipe", new_recipe_path, class: "btn btn-success mt-3" %>
+<div class="pages-header">
+  <h2 class="text-center m-5">My Recipes</h2>
 </div>
+
+
+<div class="text-center mt-5 mb-3 ">
+  <%= link_to "Add Recipe", new_recipe_path, class: "general-button-green text-white" %>
+</div>
+
+
+
+  <div class="recipe pb-0 pt-1 pb-5 text-center">
+    <%= form_tag recipes_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a recipe"
+      %>
+      <%= submit_tag "Search", class: "general-button-blue" %>
+    <% end %>
+  </div>
 
 <div class="content">
   <div class="cards">

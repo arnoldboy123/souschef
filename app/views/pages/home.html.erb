@@ -1,6 +1,6 @@
 <%# style in navabar.scss %>
 <div class="text-center ", id="logo-img">
-  <%= link_to (image_tag("logo.png", alt:"AirSea&Sea", style:"width: 150px")), root_path%>
+  <%= link_to (image_tag("logo.png", alt:"SousChef", style:"width: 150px")), root_path%>
 </div>
 
 <div class="bg-color-recipe">
@@ -15,7 +15,7 @@
 <div class="bg-color-fridge">
   <div class="d-flex flex-column align-items-center text-center">
     <div class="search-container d-flex flex-column" id="fridge">
-      <h3 class="text-center text-white align-items-start">Keep record of your ingredients and bla bla</h3>
+      <h3 class="text-center text-white align-items-start">Keep track of your fridge</h3>
       <%= link_to "", fridge_items_path, class: "stretched-link" %>
     </div>
   </div>
@@ -29,15 +29,17 @@
   </div>
 </div>
 
+<div class="mx-3">
   <h3 class="text-center mt-5">Not sure what to cook?</h3>
-  <h5 class="text-center mt-5">Plan your meals based on the ingredients you have</h5>
+  <h5 class="text-center mt-3">Plan your meals based on the ingredients you have</h5>
+</div>
 
 <div class="d-flex flex-column align-items-center text-center">
   <div class="search-container d-flex flex-column" id="planner">
-    <h5 class="text-center text-white align-items-start"></h5>
-    <form action="/planned_recipes/planner" method="post" class="recipe-form-home">
-      <div><input type="integer" name="days" class="search-bar-home" placeholder="Days"></div>
-      <div class="p-2"><input type="submit", class="search-ingredient-btn-home"></div>
+    <h4 class="text-center text-white align-items-start">How many meals would you like to plan?</h4>
+    <form action="/planned_recipes/planner" method="post" class="recipe-form-home mt-2">
+      <div><input type="integer" name="days" class="search-bar-home mb-1 px-5 py-2 text-small text-center" placeholder="e.g. 5"></div>
+      <div class="px-5 mt-3"><input type="submit", class="search-ingredient-btn-home"></div>
     </form>
   </div>
 </div>
