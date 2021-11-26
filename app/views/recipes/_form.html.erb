@@ -1,8 +1,10 @@
-<%= simple_form_for(@recipe) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :instructions %>
-  <%= f.input :cooking_time %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit "add recipe", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <%= simple_form_for(@recipe) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :instructions %>
+    <%= f.input :cooking_time %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "add recipe", class: "btn btn-primary" %>
+  <% end %>
+</div>
