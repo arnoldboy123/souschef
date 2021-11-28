@@ -74,12 +74,12 @@ input[type="radio"]:checked + .form-check-label{
 .btn-myplanner {
   border: solid 1px grey;
   border-radius: 10px;
-  margin-bottom: 20px;
-  padding:7px 50px;
-  margin-top: 20px;
-  color: black!important;
+  margin: 20px 10px;
+  padding: 7px 20px!important;
+  color: black;
   font-size: 14px;
   opacity: 0.7!important;
+  display: inline;
 }
 
 .btn-myplanner:hover {
@@ -97,6 +97,7 @@ input[type="radio"]:checked + .form-check-label{
   padding: 6px 50px;
   border: none;
   border-radius: 10px;
+  font-size: 16px;
 }
 
 .general-button-green {

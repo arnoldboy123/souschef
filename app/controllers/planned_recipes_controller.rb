@@ -36,19 +36,17 @@ class PlannedRecipesController < ApplicationController
 
   def planner
     days = params[:days]
-    puts days
-    today = Date.today
+    @planner_recipes = PlannedRecipe.order(:date)
+    @future_meals = @planner_recipes.select { |meal| meal.date > Date.today }
+    today = @future_meals.count < 1 ? Date.today : PlannedRecipe.order(:date).last.date
     i = 1
     days.to_i.times do
-      if PlannedRecipe.create!(date: today + i, user: current_user, recipe: Recipe.last)
-        today += 1.day
-      else
-        flash[:alert] = 'You already have a plan for that day!'
-        redirect_to 'planned_recipes_planner_path'
-      end
+      PlannedRecipe.create!(date: today + i, user: current_user, recipe: Recipe.last)
+      today += 1.day
     end
     @planner_recipes = PlannedRecipe.order(:date)
     @all_recipes = Recipe.where(creator: current_user)
+    @future_meals = @planner_recipes.select { |meal| meal.date > Date.today }
   end
 
   def shopping_list
@@ -69,7 +67,6 @@ class PlannedRecipesController < ApplicationController
       @fridge_items[item.ingredient.name] = 1
     end
     @shopping_list.each do |shopping, _vol|
-    # # @fridge_items.each do |item, num|
       if @fridge_items.has_key?(shopping)
         @shopping_list[shopping] -= @fridge_items[shopping]
       end
