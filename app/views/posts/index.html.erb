@@ -1,0 +1,26 @@
+<h1>Welcome back <%= current_user.username %></h1>
+<h2>See what your friends are up to:</h2>
+
+<%= link_to "share your latest creation!", new_post_path %>
+
+<% @posts.each do |post| %>
+  <div class="card mt-5">
+    <h1><%= post.content %></h1>
+    <%= link_to post.recipe.name, recipe_path(post.recipe)%>
+    <h3><%= post.user.username %></h3>
+    <h3><%= post.date %></h3>
+    <% if @comments.empty? %>
+      <p>Be the first to leave a comment</p>
+    <% else %>
+      <ul>
+        <% @comments.where(post: post).each do |comment| %>
+          <li><%= comment.content %> - <%= comment.user.username %></li>
+        <% end%>
+      </ul>
+    <% end %>
+    <%= simple_form_for [ post, @comment ] do |f| %>
+      <%= f.input :content %>
+      <%= f.submit "Leave a comment", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+<% end %>

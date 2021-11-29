@@ -24,4 +24,7 @@ Rails.application.routes.draw do
       get :add
     end
   end
+  resources :posts, only: [:index, :new, :create] do
+    resources :comments, only: [:create]
+  end
 end

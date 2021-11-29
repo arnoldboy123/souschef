@@ -101,6 +101,9 @@ ActiveRecord::Schema.define(version: 2021_11_29_112712) do
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "content"
+    t.bigint "recipe_id", null: false
+    t.index ["recipe_id"], name: "index_posts_on_recipe_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -160,6 +163,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_112712) do
   add_foreign_key "friend_requests", "users", column: "requester_id"
   add_foreign_key "planned_recipes", "recipes"
   add_foreign_key "planned_recipes", "users"
+  add_foreign_key "posts", "recipes"
   add_foreign_key "posts", "users"
   add_foreign_key "recipe_items", "ingredients"
   add_foreign_key "recipe_items", "recipes"
