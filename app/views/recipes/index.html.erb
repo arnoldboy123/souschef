@@ -2,12 +2,15 @@
   <h2 class="text-center m-5">My Recipes</h2>
 </div>
 
-
-<div class="text-center mt-5 mb-3 ">
-  <%= link_to "Add Recipe", new_recipe_path, class: "general-button-green text-white" %>
+<div class="banner-recipe mt-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.cnn.com/cnnnext/dam/assets/201117152746-cookgiftslead-live-video.jpg);">
+  <div class="container ml-3">
+    <h2 class="text-white">Add your own recipe</h2>
+    <p>Something nice here</p>
+    <%= link_to "Add Recipe", new_recipe_path, class: "general-button-green text-white" %>
+  </div>
 </div>
 
-
+<h2 class="mt-5 mx-5">Or find a recipe by ingredients or name</h2>
 
   <div class="recipe pb-0 pt-1 pb-5 text-center">
     <%= form_tag recipes_path, method: :get do %>

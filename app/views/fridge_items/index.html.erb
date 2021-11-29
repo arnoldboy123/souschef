@@ -2,13 +2,13 @@
   <h2 class="text-center m-5">My fridge</h2>
 </div>
 
-<div class="container">
+<div class="container m-5">
   <div class="row">
     <div class="col-11" class="fridge">
       <ul>
         <% @fridge_items.each do |item| %>
         <div class=" " >
-          <li class= "fridge m-1 p-0"><%= item.ingredient.name %> - <%= item.quantity %></li>
+          <li class= "fridge m-3 p-0"><strong><%= item.quantity %></strong> x <%= item.ingredient.name %> </li>
         </div>
         <% end %>
         </ul>
