@@ -24,4 +24,5 @@ Rails.application.routes.draw do
       get :add
     end
   end
+  resources :posts, only: [:index, :new, :create]
 end
