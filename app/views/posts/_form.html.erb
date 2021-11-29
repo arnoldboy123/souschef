@@ -1,0 +1,9 @@
+<div class="form-container">
+  <div class="form">
+    <%= simple_form_for [ post ] do |f| %>
+      <%= f.association :recipe, collection: recipes, class:"text-left" %>
+      <%= f.input :content, class:"text-left" %>
+      <%= f.submit "Share what you cooked!", class: "search-ingredient-btn text-center" %>
+    <% end %>
+  </div>
+</div>
