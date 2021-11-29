@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :users, through: :friend_requests
 
   has_one_attached :photo
+  has_many :reviews
 
   include PgSearch::Model
   pg_search_scope :search_by_email,

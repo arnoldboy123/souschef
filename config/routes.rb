@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get :mark_done
     end
+    resources :reviews, only: %i[new create edit update]
   end
   resources :planned_recipes, only: [:create, :index, :edit, :update, :show] do
     collection do
