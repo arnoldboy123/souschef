@@ -10,20 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_25_092555) do
+ActiveRecord::Schema.define(version: 2021_11_29_112712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "FriendRequests", force: :cascade do |t|
-    t.boolean "approved"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "requester_id", null: false
-    t.bigint "recipient_id", null: false
-    t.index ["recipient_id"], name: "index_FriendRequests_on_recipient_id"
-    t.index ["requester_id"], name: "index_FriendRequests_on_requester_id"
-  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +56,15 @@ ActiveRecord::Schema.define(version: 2021_11_25_092555) do
     t.integer "quantity"
     t.index ["ingredient_id"], name: "index_fridge_items_on_ingredient_id"
     t.index ["user_id"], name: "index_fridge_items_on_user_id"
+  end
+
+  create_table "friend_requests", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "requester_id", null: false
+    t.bigint "recipient_id", null: false
+    t.index ["recipient_id"], name: "index_friend_requests_on_recipient_id"
+    t.index ["requester_id"], name: "index_friend_requests_on_requester_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -152,13 +151,13 @@ ActiveRecord::Schema.define(version: 2021_11_25_092555) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "FriendRequests", "users", column: "recipient_id"
-  add_foreign_key "FriendRequests", "users", column: "requester_id"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "fridge_items", "ingredients"
   add_foreign_key "fridge_items", "users"
+  add_foreign_key "friend_requests", "users", column: "recipient_id"
+  add_foreign_key "friend_requests", "users", column: "requester_id"
   add_foreign_key "planned_recipes", "recipes"
   add_foreign_key "planned_recipes", "users"
   add_foreign_key "posts", "users"
