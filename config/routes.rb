@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
+  resources :users do
+    resources :friend_requests
+  end
+
   root to: 'pages#home'
 
   resources :recipes do
