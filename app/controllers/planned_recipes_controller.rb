@@ -64,7 +64,7 @@ class PlannedRecipesController < ApplicationController
     @shopping_list = shopping_list
     @fridge_items = {}
     FridgeItem.all.select{ |item| item.user = current_user }.each do |item|
-      @fridge_items[item.ingredient.name] = 1
+      @fridge_items[item.ingredient.name] = item.quantity
     end
     @shopping_list.each do |shopping, _vol|
       if @fridge_items.has_key?(shopping)
