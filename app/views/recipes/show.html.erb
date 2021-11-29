@@ -23,7 +23,7 @@
     <div id="reviews">
       <div class="show-review-ing d-flex flex-column">
         <% if @recipe.reviews.blank? %>
-          <p>Be the first to <%= link_to "leave a review", new_recipe_review_path(@recipe) %> for <%= @recipe.name %> !</p>
+          <p>Be the first to <span data-toggle="modal" data-target="#exampleModal"><strong>leave a review</strong></span> for <%= @recipe.name %> !</p>
         <% else %>
           <% @recipe.reviews.each do |review| %>
             <h5> Posted by: <%= review.user.username %>
@@ -38,9 +38,28 @@
   </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@recipe, @review] do |f| %>
+        <%= f.input :comment, as: :text %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "What do you think of this recipe?" %>
+        <%= f.submit "Send your review", class:"btn-myplanner general-button-blue text-white" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="button-show d-flex flex-column justify-content-around">
-  <%= link_to "Leave a review", new_recipe_review_path(@recipe), class: "btn btn-showpage"%></p>
+<span class="btn btn-showpage" data-toggle="modal" data-target="#exampleModal">Leave a review</span>
   <%= link_to "Mark as cooked!", mark_done_recipe_path(@recipe), class: "btn btn-showpage" %>
   <%= link_to "Back", recipes_path(@recipes), class: "btn btn-showpage" %>
 </div>
