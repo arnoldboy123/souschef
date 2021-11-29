@@ -110,3 +110,22 @@ input[type="radio"]:checked + .form-check-label{
   font-size: 16px;
   color: white;
 }
+
+.general-button-log-in {
+  background:linear-gradient(132deg, #72ff71 0%, #16A085 100%);
+  color: white;
+  transition: ease 0.3s;
+  padding: 2px 30px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  font-size: 16px;
+  color: white;
+}
+
+.forgot-password-btn {
+  background: linear-gradient(313deg, rgba(199,140,67,0.8) 0%, rgba(255,51,0,0.8) 0%, rgba(255,134,0,0.8) 67%);
+  color: white;
+  transition: ease 0.3s;
+  border-radius: 10px;
+  margin-top: 20px;
+}
