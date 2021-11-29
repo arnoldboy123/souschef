@@ -1,8 +1,33 @@
-<div class="form-container">
+<div class="form-container" data-controller="fridge">
   <div class="form">
-    <%= simple_form_for [ fridge_item ] do |f| %>
-      <%= f.association :ingredient, collection: ingredients, as: :radio_buttons, legend_tag: false %>
-      <%= f.submit "Add to fridge", class: "search-ingredient-btn text-center" %>
+    <%= form_with modal: fridge_item do |f| %>
+      <%#= f.association :ingredient, collection: ingredients, as: :radio_buttons, legend_tag: false, label_html: { data: { toggle: 'modal', target: '#fridgeModal' }} %>
+      <%= f.collection_radio_buttons :ingredient_id, ingredients, :id, :name do |b| %>
+        <%= b.label(class: "form-check-label") %>
+        <%= b.label(class: "d-none", "data-toggle": "modal", "data-target": "#fridgeModal#{b.value}") { b.radio_button } %>
+      <% end %>
     <% end %>
   </div>
 </div>
+
+<% Ingredient.all.each do |ingredient| %>
+  <div class="modal fade" id=<%="fridgeModal#{ingredient.id}"%> tabindex="-1" role="dialog" aria-labelledby="fridgeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="fridgeModalLabel">How many?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for fridge_item do |f| %>
+            <%= f.input :quantity, as: :integer %>
+            <%= f.input :ingredient_id, as: :hidden, input_html: { value: ingredient.id } %>
+            <%= f.submit "Add to fridge", class: "search-ingredient-btn text-center" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
