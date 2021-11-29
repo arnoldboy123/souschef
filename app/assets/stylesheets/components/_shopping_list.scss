@@ -23,6 +23,10 @@ input#fridge_item_quantity {
   font-size: 13px;
 }
 
+#shopping-row {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
 
 h2 {
   font-family: 'Lobster', serif;

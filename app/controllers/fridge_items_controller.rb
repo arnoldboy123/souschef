@@ -12,7 +12,6 @@ class FridgeItemsController < ApplicationController
     else
       @ingredients = Ingredient.all
     end
-
     @fridge_item = FridgeItem.new
   end
 
