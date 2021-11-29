@@ -1,0 +1,31 @@
+<div class="pages-header">
+  <h2 class="text-center">See what your friends are up to:</h2>
+</div>
+
+<div class="text-center mt-5 mb-3 ">
+  <%= link_to "share your latest creation!", new_post_path, class: "general-button-green text-white" %>
+</div>
+
+<% @posts.each do |post| %>
+  <div class="card p-0 m-3">
+    <%= cl_image_tag post.recipe.photo.key, class: "rounded index-img", width: "100%", height: '200px', alt: "an image of a recipe" %>
+    <div class="p-3">
+      <p>Creator: <%= post.user.username %> - Created at <%= post.date.strftime('%a %d %b %Y')%></p>
+      <%= link_to post.recipe.name, recipe_path(post.recipe) %>
+      <h5><%= post.content %></h5>
+      <% if @comments.empty? %>
+        <p>Be the first to leave a comment</p>
+      <% else %>
+        <ul>
+          <% @comments.where(post: post).each do |comment| %>
+            <li><%= comment.content %> - <%= comment.user.username %></li>
+          <% end%>
+        </ul>
+      <% end %>
+      <%= simple_form_for [ post, @comment ] do |f| %>
+        <%= f.input :content %>
+        <%= f.submit "Leave a comment", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

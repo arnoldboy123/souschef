@@ -1,7 +1,7 @@
 <div class="form-container">
   <div class="form">
     <%= simple_form_for [ fridge_item ] do |f| %>
-      <%= f.association :ingredient, collection: ingredients, as: :radio_buttons, checked:"checked", class:"text-left" %>
+      <%= f.association :ingredient, collection: ingredients, as: :radio_buttons, legend_tag: false %>
       <%= f.submit "Add to fridge", class: "search-ingredient-btn text-center" %>
     <% end %>
   </div>
