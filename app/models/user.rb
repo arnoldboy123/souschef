@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :fridge_items, dependent: :destroy
 
   has_one_attached :photo
+  has_many :reviews
 end

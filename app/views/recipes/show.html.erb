@@ -19,10 +19,28 @@
       <h5 class="text-center my-3">Instructions</h5>
       <p class="text-center mt-3 mb-10"><%= @recipe.instructions %></p>
     </div>
+
+    <div id="reviews">
+      <div class="show-review-ing d-flex flex-column">
+        <% if @recipe.reviews.blank? %>
+          <p>Be the first to <%= link_to "leave a review", new_recipe_review_path(@recipe) %> for <%= @recipe.name %> !</p>
+        <% else %>
+          <% @recipe.reviews.each do |review| %>
+            <h5> Posted by: <%= review.user.username %>
+            <p><% review.rating.to_i.times do  %>
+              <i class="far fa-star"></i>
+            <% end %>
+            <p class="text-left my-3"><%= review.comment.capitalize %> <%= review.user_id != current_user.id ? "" : (link_to "✏️", edit_recipe_review_path(@recipe, review)) %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
+
 <div class="button-show d-flex flex-column justify-content-around">
+  <%= link_to "Leave a review", new_recipe_review_path(@recipe), class: "btn btn-showpage"%></p>
   <%= link_to "Mark as cooked!", mark_done_recipe_path(@recipe), class: "btn btn-showpage" %>
   <%= link_to "Back", recipes_path(@recipes), class: "btn btn-showpage" %>
 </div>
