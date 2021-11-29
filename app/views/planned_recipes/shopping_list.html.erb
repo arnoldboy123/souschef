@@ -3,7 +3,7 @@
 </div>
 
 <div class="container">
-  <div class="row">
+  <div class="row d-flex justify-content-between">
     <div class="col-11" id="shopping">
         <ul>
           <% @shopping_list.each do |shopping, num| %>
@@ -12,9 +12,16 @@
             <div class="d-flex" data-controller="shopping-list">
               <div class="row mb-2 mt-2" data-shopping-list-target='item'>
                 <%= form_for @fridge_item, url: add_fridge_item_path(shopping), method: :get, html: { data: {shopping_list_target: 'form', action: 'submit->shopping-list#removeItem' }} do |f| %>
-                  <%= shopping %> : <%= f.text_field :quantity, as: :integer, class: 'col-2', placeholder: num %>
-                  <%= button_tag class: 'border-none', type: 'submit' do %>
-                    <i class="fas fa-shopping-cart" data-shopping-list-target='button'></i>
+                <div class="d-inline-flex m-3">
+                  <div class="col-6 h-50">
+                    <%= shopping %>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <%= f.text_field :quantity, as: :integer, class: 'col-4', placeholder: num %>
+                    <%= button_tag class: 'border-none align-middle', type: 'submit' do %>
+                    <i class="fas fa-shopping-basket mr-5" data-shopping-list-target='button'></i>
+                  </div>
+                </div>
                   <% end %>
                 <% end %>
               </div>
