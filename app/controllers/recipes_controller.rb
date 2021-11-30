@@ -20,6 +20,19 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.creator = current_user
+    params["recipe"]["ingredient_ids"][1..-1].each do |id|
+      if @recipe.ingredients.empty?
+        recipe_item = RecipeItem.new
+        recipe_item.ingredient = Ingredient.find_by_id(id)
+        recipe_item.recipe = @recipe
+        recipe_item.save
+      else
+        recipe_item = RecipeItem.new
+        recipe_item.ingredient = Ingredient.find_by_id(id)
+        recipe_item.recipe = @recipe
+        recipe_item.save
+      end
+    end
     if @recipe.save
       redirect_to recipes_path(@recipe)
     else
@@ -67,7 +80,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :instructions, :cooking_time, :description, :photo)
+    params.require(:recipe).permit(:name, :instructions, :cooking_time, :description, :photo, :ingredient_ids)
   end
 
   def fridge_hash
