@@ -10,7 +10,7 @@
         <% @planned_recipe = PlannedRecipe.find(recipe.id) %>
         <p class="date-planner p-2"><%= recipe.date.strftime("%A, %b %d") %></p>
         <%= simple_form_for @planned_recipe, method: :patch, html: { data: { planner_day_target: 'form', action: 'change->planner-day#submitForm' }} do |f| %>
-          <%= f.association :recipe, collection: Recipe.where(creator: current_user), label: false, include_blank: true, selected: 0 %>
+          <%= f.association :recipe, collection: Recipe.where(creator: current_user) + PlannedRecipe.where(user: current_user).map { |r| r.recipe }, label: false, include_blank: true, selected: 0 %>
         <% end %>
       </div>
       <% end %>

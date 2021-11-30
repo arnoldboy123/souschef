@@ -36,7 +36,7 @@ class PlannedRecipesController < ApplicationController
 
   def planner
     days = params[:days]
-    @planner_recipes = PlannedRecipe.order(:date)
+    @planner_recipes = PlannedRecipe.where.not(date: nil).order(:date)
     @future_meals = @planner_recipes.select { |meal| meal.date > Date.today }
     today = @future_meals.count < 1 ? Date.today : PlannedRecipe.order(:date).last.date
     i = 1
@@ -44,7 +44,7 @@ class PlannedRecipesController < ApplicationController
       PlannedRecipe.create!(date: today + i, user: current_user, recipe: Recipe.last)
       today += 1.day
     end
-    @planner_recipes = PlannedRecipe.order(:date)
+    @planner_recipes = PlannedRecipe.where.not(date: nil).order(:date)
     @all_recipes = Recipe.where(creator: current_user)
     @future_meals = @planner_recipes.select { |meal| meal.date > Date.today }
   end
