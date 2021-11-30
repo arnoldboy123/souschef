@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get :shopping_list
     end
     member do
+      get :steal
       post :steal
     end
   end

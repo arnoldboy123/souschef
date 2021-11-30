@@ -5,10 +5,18 @@
   </div>
     <%= link_to "Add recipe!", steal_planned_recipe_path(@recipe), method: :post, class: "add-rcp-btn btn-myplanner general-button-blue text-white" %>
 
-    <h5 class="text-center my-5"><%= @recipe.name %></h5>
-    <p class="text-center mb-5"><%= @recipe.description %></p>
+    <div class="show-review d-flex flex-column pb-4">
+      <h5 class="text-center my-5"><%= @recipe.name %></h5>
+      <p class="text-center mb-5"><%= @recipe.description %></p>
+    </div>
     <div class="show-review d-flex justify-content-between">
-      <h6 class="pl-10">Review 4/5</h6>
+      <h6 class="pl-10">
+        <% if @recipe.reviews.empty? %>
+          Be the first to leave a rating
+        <% else %>
+          <%= @average_rating %>
+        <% end %>
+      </h6>
       <p><%= @recipe.cooking_time %>min</p>
     </div>
 
@@ -93,7 +101,7 @@
       <div class="modal-body">
         <%= simple_form_for [@recipe, @review] do |f| %>
         <%= f.input :comment, as: :text %>
-        <%= f.input :rating, collection: (1..5).to_a, label: "What do you think of this recipe?" %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate the recipe (5 if you love it!)" %>
         <%= f.submit "Send your review", class:"btn-myplanner general-button-blue text-white" %>
       <% end %>
       </div>
