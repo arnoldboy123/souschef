@@ -2,11 +2,23 @@ class RecipesController < ApplicationController
   before_action :find_recipe, only: %i[show edit update destroy mark_done]
 
   def index
+    my_recipes
     if params[:query].present?
       @recipes = Recipe.search_by_name_and_description(params[:query])
     else
-      @recipes = Recipe.all
+      @recipes = @user_recipes
     end
+  end
+
+  def my_recipes
+    @my_recipes = Recipe.where(creator: current_user)
+    @stolen_recipes = PlannedRecipe.where(user: current_user)
+    @stolen_recipes = @stolen_recipes.select {|r| r.date == nil }
+    @friend_recipes = []
+    @stolen_recipes.each do |recipe|
+      @friend_recipes << recipe.recipe
+    end
+    @user_recipes = @my_recipes + @friend_recipes
   end
 
   def show
