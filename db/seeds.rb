@@ -251,8 +251,7 @@ puts "adding some recipes"
       Just before serving, scatter with the grated orange rind and/or flaked toasted almonds.',
     cooking_time: 50
   )
-
-  file7 = URI.open('https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/sherrytrifle_76387_16x9.jpg')
+   file7 = URI.open('https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/sherrytrifle_76387_16x9.jpg')
   recipe7.photo.attach(io: file7, filename: 'rec.png', content_type: 'image/png')
   recipe7.save!
 
@@ -280,9 +279,10 @@ puts "adding some recipes"
     cooking_time: 120
   )
 
-  file8 = URI.open('https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/sherrytrifle_76387_16x9.jpg')
+  file8 = URI.open('https://images.immediate.co.uk/production/volatile/sites/30/2020/08/light-fruity-christmas-pudding-3b9aeac-e1626189256864.jpg?quality=90&webp=true&resize=300,272')
   recipe8.photo.attach(io: file8, filename: 'rec.png', content_type: 'image/png')
   recipe8.save!
+
 
   recipe9 = Recipe.new(
     name: 'Radicchio, chestnut and blue cheese salad',
