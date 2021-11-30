@@ -7,9 +7,11 @@
     <div class="col-11" class="fridge">
       <ul>
         <% @fridge_items.each do |item| %>
-        <div class=" " >
-          <li class= "fridge m-3 p-0"><strong><%= item.quantity %></strong> x <%= item.ingredient.name %> </li>
-        </div>
+          <% if item.quantity.to_i > 0 %>
+            <div class=" " >
+              <li class= "fridge m-3 p-0"><strong><%= item.quantity %></strong> x <%= item.ingredient.name %> </li>
+            </div>
+          <% end %>
         <% end %>
         </ul>
     </div>
