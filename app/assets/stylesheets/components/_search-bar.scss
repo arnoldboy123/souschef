@@ -17,8 +17,28 @@ input#query.form-control {
   position: relative;
 }
 
+.search-container-recipe {
+  background-size: cover;
+  background-position: center;
+  padding: 40px;
+  width: 100%;
+  flex-grow: 0;
+  border-radius: 10px;
+  margin-top: 30px;
+  max-width: 500px;
+  max-height: 500px;
+  position: relative;
+}
+
 #text-logo {
   font-family: "Lobster";
+}
+
+#search-recipe-index {
+ background-color: white;
+ width: 90%;
+ border: 1px solid rgba(128, 128, 128, 0.45);
+ box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.56);
 }
 
 #recipe {
@@ -27,8 +47,11 @@ input#query.form-control {
 }
 
 #planner {
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXq3ugMG0SGg4EgpyQgYHCifOocKQpuQcE8FKK9yMo0l2eslK4noo4TK5W5sfYj9zJqsE&usqp=CAU');
-  width: 90%;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://blog.myfitnesspal.com/wp-content/uploads/2017/12/Essential-Guide-to-Healthy-Eating-2-752x472.png');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 450px;
 }
 
 #fridge {
@@ -41,6 +64,11 @@ input#query.form-control {
   width: 90%;
 }
 
+.bg-color-search-recipe {
+  margin-top: 40px;
+  background: linear-gradient(180deg, rgba(50, 222, 96, 0.8) 58%, rgba(52, 182, 23, 0) 58%);;
+  width: 100%;
+}
 
 .bg-color-recipe {
   margin-top: 40px;

@@ -1,4 +1,6 @@
-<h2 class="mt-5 text-center" style="font-family: 'Lobster'">My Planner</h2>
+<div class="pages-header">
+<h2 class="m-5 text-center">My Planner</h2>
+</div>
 
 <div class="content-planner">
   <div class="planner-card">
@@ -8,7 +10,7 @@
         <% @planned_recipe = PlannedRecipe.find(recipe.id) %>
         <p class="date-planner p-2"><%= recipe.date.strftime("%A, %b %d") %></p>
         <%= simple_form_for @planned_recipe, method: :patch, html: { data: { planner_day_target: 'form', action: 'change->planner-day#submitForm' }} do |f| %>
-          <%= f.association :recipe, label: false, include_blank: true, selected: 0 %>
+          <%= f.association :recipe, collection: Recipe.where(creator: current_user) + PlannedRecipe.where(user: current_user).where(date: nil).map { |r| r.recipe }, label: false %>
         <% end %>
       </div>
       <% end %>
@@ -16,6 +18,41 @@
   </div>
 </div>
 
-<div class="text-center text-small">
-  <p><small><%= link_to "Generate shopping list!", shopping_list_planned_recipes_path, class: "btn-myplanner" %><small></p>
+<% if @future_meals.count > 0 %>
+  <div class="text-center text-small">
+    <p><small><%= link_to "Shopping list", shopping_list_planned_recipes_path, class: "btn-myplanner general-button-blue text-white" %>
+    <button type="button" class="btn-myplanner general-button-green text-white" data-toggle="modal" data-target="#exampleModal">
+      Add days
+    <small></button>
+  </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">How many days?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/planned_recipes/planner" method="post" class="recipe-form-home mt-2">
+          <div><input type="integer" name="days" class="search-bar-home mb-1 px-5 py-2 text-center lead" placeholder="e.g. 5"></div>
+          <div class="text-center"><input type="submit", class="btn-myplanner general-button-blue text-white"></div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+  </div>
+<% else %>
+  <div class="mb-4 text-center mx-5"><h4 class="text-center align-items-start">How many meals would you like to plan?</h4></div>
+  <form action="/planned_recipes/planner" method="post" class="recipe-form-home mt-2 mx-3">
+    <div class="container">
+      <div><input type="integer" name="days" class="search-bar-home mb-1 px-5 py-2 text-small text-center" placeholder="e.g. 5"></div>
+      <div class="text-center"><input value="Go!", type="submit", class="btn-myplanner"></div>
+    </div>
+  </form>
+<% end %>

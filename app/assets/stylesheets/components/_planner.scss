@@ -1,7 +1,7 @@
 .planner-day {
   width: 100%;
   padding: 15px 30px;
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
   border-radius: 20px;
   border: 1px solid black;
@@ -20,9 +20,13 @@
 
 
 .content-planner {
-  margin: 30px;
+  margin: 15px 30px;
 }
 
 .form-control {
   border-radius: 10px;
+}
+
+#planned_recipe_recipe_id {
+  height: 45px;
 }

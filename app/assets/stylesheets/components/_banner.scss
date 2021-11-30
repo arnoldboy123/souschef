@@ -2,6 +2,7 @@
 .banner-show {
   margin: 10px 0 10px;
   padding-bottom: 10px;
+  position: relative;
 }
 
 .recipe-show-page-img {
@@ -12,7 +13,7 @@
 
 // body recipe show page
 .show-review {
-  margin: 0 20px;
+  margin: 0 50px;
   border-top: solid 1px grey;
   border-bottom: solid 1px grey;
   padding-bottom: 20px;
@@ -20,9 +21,32 @@
 }
 
 .show-review-ing {
-  margin: 0 20px;
+  margin: 0 50px;
   border-bottom: solid 1px grey;
   padding-bottom: 20px;
   padding-top: 40px;
 }
 // body recipe show page
+
+// banner recipe show page
+.banner-recipe {
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+  border-top-left-radius: 40px;
+}
+
+.banner-recipe h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner-recipe p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}

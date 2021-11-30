@@ -36,23 +36,21 @@ class PlannedRecipesController < ApplicationController
 
   def planner
     days = params[:days]
-    puts days
-    today = Date.today
+    @planner_recipes = PlannedRecipe.where.not(date: nil).order(:date)
+    @future_meals = @planner_recipes.select { |meal| meal.date > Date.today }
+    today = @future_meals.count < 1 ? Date.today : PlannedRecipe.where.not(date: nil).order(:date).last.date
     i = 1
     days.to_i.times do
-      if PlannedRecipe.create!(date: today + i, user: current_user, recipe: Recipe.last)
-        today += 1.day
-      else
-        flash[:alert] = 'You already have a plan for that day!'
-        redirect_to 'planned_recipes_planner_path'
-      end
+      PlannedRecipe.create!(date: today + i, user: current_user, recipe: Recipe.last)
+      today += 1.day
     end
-    @planner_recipes = PlannedRecipe.order(:date)
+    @planner_recipes = PlannedRecipe.where.not(date: nil).order(:date)
     @all_recipes = Recipe.where(creator: current_user)
+    @future_meals = @planner_recipes.select { |meal| meal.date > Date.today }
   end
 
   def shopping_list
-    @meals = PlannedRecipe.all.select{ |meal| meal.date > Date.today }
+    @meals = PlannedRecipe.where.not(date: nil).all.select{ |meal| meal.date > Date.today }
     shopping_list = {}
     @meals.each do |meal|
       meal.recipe.recipe_items.each do |item|
@@ -66,15 +64,23 @@ class PlannedRecipesController < ApplicationController
     @shopping_list = shopping_list
     @fridge_items = {}
     FridgeItem.all.select{ |item| item.user = current_user }.each do |item|
-      @fridge_items[item.ingredient.name] = 1
+      @fridge_items[item.ingredient.name] = item.quantity
     end
     @shopping_list.each do |shopping, _vol|
-    # # @fridge_items.each do |item, num|
       if @fridge_items.has_key?(shopping)
         @shopping_list[shopping] -= @fridge_items[shopping]
       end
     end
     return @shopping_list
+  end
+
+  def steal
+    @planned_recipe = PlannedRecipe.new(recipe_id: params[:id])
+    recipe = Recipe.find(params[:id].to_i)
+    @planned_recipe.user_id = current_user.id
+    if @planned_recipe.save!
+      redirect_to recipes_path(recipe)
+    end
   end
 
   private

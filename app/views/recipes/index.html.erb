@@ -1,16 +1,33 @@
-<div class="recipe pb-0 pt-1">
-  <%= form_tag recipes_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a recipe"
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  <% end %>
-  <%= link_to "Add Recipe", new_recipe_path, class: "btn btn-success mt-3" %>
+<div class="banner-recipe mt-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://cdn.cnn.com/cnnnext/dam/assets/201117152746-cookgiftslead-live-video.jpg);">
+  <div class="container ml-3">
+    <h2 class="text-white">Add your own recipe</h2>
+    <p>Something nice here</p>
+    <%= link_to "Add Recipe", new_recipe_path, class: "general-button-green text-white" %>
+  </div>
+</div>
+
+<div class="bg-color-search-recipe">
+  <div class="d-flex flex-column align-items-center text-center">
+    <div class="search-container-recipe d-flex flex-column" id="search-recipe-index">
+      <h2 class="">Or find recipes you saved</h2>
+        <%= form_tag recipes_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Ingredient or recipe name"
+          %>
+          <%= submit_tag "Search", class: "general-button-blue mb-3" %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="pages-header">
+  <h2 class="text-center m-5 pb-3 pt-3">My Recipes</h2>
 </div>
 
 <div class="content">
+<br><br>
   <div class="cards">
   <% @recipes.each do |recipe| %>
     <div class="recipe-card">
@@ -25,5 +42,5 @@
       </ul>
     </div>
     <% end %>
-    </div>
+  </div>
 </div>

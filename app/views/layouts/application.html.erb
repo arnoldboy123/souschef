@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Souschef</title>
+    <title>Souschef - Makes You Chef</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,6 +9,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= favicon_link_tag %>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
@@ -32,21 +34,27 @@
             <li class="text-muted"><%= link_to 'My Recipes', recipes_path %></li>
             <li class="text-muted"><%= link_to 'My Planner', planner_planned_recipes_path %></li>
             <li class="text-muted"><%= link_to 'My Shopping List', shopping_list_planned_recipes_path %></li>
+            <li class="text-muted"><%= link_to 'My News Feed', posts_path %></li>
             <li class="text-muted"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
+
     <div class="container w-100 p-0">
       <%= yield %>
     </div>
 
-    <footer class="pos-f-b page-footer font-small blue pb-5">
-      <hr class="clearfix w-100 d-md-none pb-3">
-      <div class="footer-copyright text-center py-3">© 2021 Copyright:
-        Sous Chef</a>
+    <div class="footer" id="footerhome">
+      <div class="footer-links">
+        Coming soon...
       </div>
-    </footer>
+      <div class="footer-copyright">
+          <%= link_to (image_tag("nonamelogo.png", alt:"SousChef", style:"width: 60px")), root_path%>
+      </div>
+    </div>
+
+
   </body>
 </html>

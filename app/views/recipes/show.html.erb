@@ -3,26 +3,73 @@
   <div class="banner-show"></div>
     <%= cl_image_tag @recipe.photo.key, class: "show-img center", width: "100%", height: '200px', alt: "an image of a recipe" %>
   </div>
+    <%= link_to "Add recipe!", steal_planned_recipe_path(@recipe), method: :post, class: "add-rcp-btn btn-myplanner general-button-blue text-white" %>
+
     <h5 class="text-center my-5"><%= @recipe.name %></h5>
     <p class="text-center mb-5"><%= @recipe.description %></p>
     <div class="show-review d-flex justify-content-between">
-      <h6 class="pl-10">Review 4/5</h6>
+      <h6 class="pl-10">
+        <% if @recipe.reviews.empty? %>
+          Be the first to leave a rating
+        <% else %>
+          <%= @average_rating %>
+        <% end %>
+      </h6>
       <p><%= @recipe.cooking_time %>min</p>
     </div>
+
     <div class="show-review-ing d-flex flex-column pb-4">
       <h5 class="text-center pb-5">Ingredients</h5>
-      <% @recipe.ingredients.each do |ingredient| %>
-        <p class="text-center"><strong><%= ingredient.name %></strong></p>
-      <% end %>
+      <% @recipe.recipe_items.each do |item| %>
+        <p class="text-center"><strong> <%= item.quantity %> x <%= item.ingredient.name %> </strong></p>
+      <% end  %>
     </div>
+
     <div class="show-review-ing d-flex flex-column">
       <h5 class="text-center my-3">Instructions</h5>
       <p class="text-center mt-3 mb-10"><%= @recipe.instructions %></p>
+    </div>
+
+    <div id="reviews">
+      <div class="show-review-ing d-flex flex-column">
+        <% if @recipe.reviews.blank? %>
+          <p>Be the first to <span data-toggle="modal" data-target="#exampleModal"><strong>leave a review</strong></span> for <%= @recipe.name %> !</p>
+        <% else %>
+          <% @recipe.reviews.each do |review| %>
+            <h5> Posted by: <%= review.user.username %>
+            <p><% review.rating.to_i.times do  %>
+              <i class="far fa-star"></i>
+            <% end %>
+            <p class="text-left my-3"><%= review.comment.capitalize %> <%= review.user_id != current_user.id ? "" : (link_to "✏️", edit_recipe_review_path(@recipe, review)) %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@recipe, @review] do |f| %>
+        <%= f.input :comment, as: :text %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate the recipe (5 if you love it!)" %>
+        <%= f.submit "Send your review", class:"btn-myplanner general-button-blue text-white" %>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="button-show d-flex flex-column justify-content-around">
+<span class="btn btn-showpage" data-toggle="modal" data-target="#exampleModal">Leave a review</span>
   <%= link_to "Mark as cooked!", mark_done_recipe_path(@recipe), class: "btn btn-showpage" %>
   <%= link_to "Back", recipes_path(@recipes), class: "btn btn-showpage" %>
 </div>

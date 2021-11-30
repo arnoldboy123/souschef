@@ -3,6 +3,7 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :instructions %>
+    <%= f.association :ingredients, collection: Ingredient.all, input_html: {multiple: true, data: { controller: 'select2' }} %>
     <%= f.input :cooking_time %>
     <%= f.input :photo, as: :file %>
     <%= f.submit "add recipe", class: "btn btn-primary" %>

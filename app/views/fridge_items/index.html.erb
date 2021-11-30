@@ -1,16 +1,23 @@
-<div class="container">
+<div class="pages-header">
+  <h2 class="text-center m-5">My fridge</h2>
+</div>
+
+<div class="container m-5">
   <div class="row">
     <div class="col-11" class="fridge">
-      <div class="card-fridge bg-light" >
-        <h2>My fridge</h2>
-        <ul>
+      <ul>
         <% @fridge_items.each do |item| %>
-          <li class= "fridge"><%= item.ingredient.name %></li>
+          <% if item.quantity.to_i > 0 %>
+            <div class=" " >
+              <li class= "fridge m-3 p-0"><strong><%= item.quantity %></strong> x <%= item.ingredient.name %> </li>
+            </div>
+          <% end %>
         <% end %>
         </ul>
-
-        <%= link_to "Add to fridge", new_fridge_item_path, class: "btn btn-primary" %>
-      </div>
     </div>
   </div>
+</div>
+
+<div class="text-center text-small">
+  <%= link_to "Add to fridge", new_fridge_item_path, class: "btn-myplanner text-center mt-5" %>
 </div>

@@ -53,6 +53,7 @@ item.user_id = User.last.id
 item.save!
 
 puts "adding some recipes"
+
 # 50.times do
 #   @recipe = Recipe.new(
 #     name: Faker::Food.unique.dish,
@@ -198,17 +199,19 @@ puts "adding some recipes"
 
       Season with salt and pepper and serve straightaway.',
     cooking_time: 25
-  )
+    )
 
   file4 = URI.open('https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/creamedbrusselssprou_84835_16x9.jpg')
   recipe4.photo.attach(io: file4, filename: 'rec.png', content_type: 'image/png')
   recipe4.save!
+
 
   recipe5 = Recipe.new(
     name: 'Easy roast potatoes',
     description: 'Not only are these really easy roast potatoes, theyre vegetarian. Roasting in olive oil gives a great flavour. Dont bother using expensive extra virgin olive oil for cooking, though. A blend is fine.',
     creator: User.first,
     instructions: 'Preheat the oven to 220C/200C Fan/Gas 7.
+
 
       Peel the potatoes and cut into large chunks. Parboil in boiling salted water for 5 minutes. Drain and toss in the pan to roughen the edges.
 
