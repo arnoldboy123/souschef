@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :users do
-    resources :friend_requests
+    resources :friend_requests, only: [:create, :destroy]
   end
 
   root to: 'pages#home'

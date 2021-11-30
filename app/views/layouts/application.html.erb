@@ -34,6 +34,7 @@
             <li class="text-muted"><%= link_to 'My Recipes', recipes_path %></li>
             <li class="text-muted"><%= link_to 'My Planner', planner_planned_recipes_path %></li>
             <li class="text-muted"><%= link_to 'My Shopping List', shopping_list_planned_recipes_path %></li>
+            <li class="text-muted"><%= link_to 'My Friends', users_path %></li>
             <li class="text-muted"><%= link_to 'My News Feed', posts_path %></li>
             <% if current_user %>
               <li class="text-muted"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
