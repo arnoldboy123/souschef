@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       get :planner
       get :shopping_list
     end
+    member do
+      post :steal
+    end
   end
   resources :fridge_items, path: "my_fridge", only: [:index, :new, :create, :edit, :update, :destroy] do
     member do

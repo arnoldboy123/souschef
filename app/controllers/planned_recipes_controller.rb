@@ -74,6 +74,15 @@ class PlannedRecipesController < ApplicationController
     return @shopping_list
   end
 
+  def steal
+    @planned_recipe = PlannedRecipe.new(recipe_id: params[:id])
+    recipe = Recipe.find(params[:id].to_i)
+    @planned_recipe.user_id = current_user.id
+    if @planned_recipe.save!
+      redirect_to recipes_path(recipe)
+    end
+  end
+
   private
 
   def find_planned_recipe
