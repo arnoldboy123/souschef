@@ -27,6 +27,14 @@ class RecipesController < ApplicationController
 
   def show
     @review = Review.new
+    @reviews = @recipe.reviews
+    total_rating = 0
+    count = 0
+    @recipe.reviews.each do |review|
+      total_rating += review.rating
+      count += 1
+    end
+    @average_rating = total_rating/count if count > 0
   end
 
   def new
