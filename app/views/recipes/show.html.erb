@@ -38,7 +38,7 @@
           <% @recipe.reviews.each do |review| %>
             <h5> Posted by: <%= review.user.username %>
             <p><% review.rating.to_i.times do  %>
-              <i class="far fa-star"></i>
+              ⭐️
             <% end %>
             <p class="text-left my-3"><%= review.comment.capitalize %> <%= review.user_id != current_user.id ? "" : (link_to "✏️", edit_recipe_review_path(@recipe, review)) %></p>
           <% end %>
@@ -60,7 +60,7 @@
       <div class="modal-body">
         <%= simple_form_for [@recipe, @review] do |f| %>
         <%= f.input :comment, as: :text %>
-        <%= f.input :rating, collection: (1..5).to_a, label: "Rate the recipe (5 if you love it!)" %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate the recipe (⭐️⭐️⭐️⭐️⭐️ if you ❤️ it!)" %>
         <%= f.submit "Send your review", class:"btn-myplanner general-button-blue text-white" %>
       <% end %>
       </div>
