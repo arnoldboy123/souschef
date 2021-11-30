@@ -38,7 +38,7 @@ class PlannedRecipesController < ApplicationController
     days = params[:days]
     @planner_recipes = PlannedRecipe.where.not(date: nil).order(:date)
     @future_meals = @planner_recipes.select { |meal| meal.date > Date.today }
-    today = @future_meals.count < 1 ? Date.today : PlannedRecipe.order(:date).last.date
+    today = @future_meals.count < 1 ? Date.today : PlannedRecipe.where.not(date: nil).order(:date).last.date
     i = 1
     days.to_i.times do
       PlannedRecipe.create!(date: today + i, user: current_user, recipe: Recipe.last)
@@ -50,7 +50,7 @@ class PlannedRecipesController < ApplicationController
   end
 
   def shopping_list
-    @meals = PlannedRecipe.all.select{ |meal| meal.date > Date.today }
+    @meals = PlannedRecipe.where.not(date: nil).all.select{ |meal| meal.date > Date.today }
     shopping_list = {}
     @meals.each do |meal|
       meal.recipe.recipe_items.each do |item|
