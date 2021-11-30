@@ -6,7 +6,11 @@ class RecipesController < ApplicationController
     if params[:query].present?
       @recipes = Recipe.search_by_name_and_description(params[:query])
     else
-      @recipes = @user_recipes
+      if @user_recipes.count < 3
+        @recipes = Recipe.all
+      else
+        @recipes = @user_recipes
+      end
     end
   end
 
