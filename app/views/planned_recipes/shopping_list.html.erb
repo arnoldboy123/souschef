@@ -12,7 +12,7 @@
             <%= shopping %>
           </div>
           <div class="d-inline text-right">
-            <%= form_for @fridge_item, url: add_fridge_item_path(shopping), method: :get, html: { data: {shopping_list_target: 'form', action: 'submit->shopping-list#removeItem' }} do |f| %>
+            <%= form_for @fridge_item, url: add_fridge_item_path(shopping), method: :get do |f| %>
               <%= f.text_field :quantity, as: :integer, class: "w-25", placeholder: num %>
               <%= button_tag class: 'border-none align-middle', type: 'submit' do %>
                 <i class="fas fa-shopping-basket" data-shopping-list-target='button'></i>
