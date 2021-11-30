@@ -11,12 +11,14 @@
       <h6 class="pl-10">Review 4/5</h6>
       <p><%= @recipe.cooking_time %>min</p>
     </div>
+
     <div class="show-review-ing d-flex flex-column pb-4">
       <h5 class="text-center pb-5">Ingredients</h5>
-      <% @recipe.ingredients.each do |ingredient| %>
-        <p class="text-center"><strong><%= ingredient.name %></strong></p>
-      <% end %>
+      <% @recipe.recipe_items.each do |item| %>
+        <p class="text-center"><strong> <%= item.quantity %> x <%= item.ingredient.name %> </strong></p>
+      <% end  %>
     </div>
+
     <div class="show-review-ing d-flex flex-column">
       <h5 class="text-center my-3">Instructions</h5>
       <p class="text-center mt-3 mb-10"><%= @recipe.instructions %></p>
