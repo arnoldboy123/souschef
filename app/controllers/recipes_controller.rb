@@ -25,11 +25,13 @@ class RecipesController < ApplicationController
         recipe_item = RecipeItem.new
         recipe_item.ingredient = Ingredient.find_by_id(id)
         recipe_item.recipe = @recipe
+        recipe_item.quantity = 1
         recipe_item.save
       else
         recipe_item = RecipeItem.new
         recipe_item.ingredient = Ingredient.find_by_id(id)
         recipe_item.recipe = @recipe
+        recipe_item.quantity = 1
         recipe_item.save
       end
     end
