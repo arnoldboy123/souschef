@@ -34,11 +34,31 @@
 <br><br>
   <div class="cards">
   <% @recipes.each do |recipe| %>
+    <% total_rating = 0 %>
+    <% count = 0 %>
+    <% recipe.reviews.each do |review| %>
+      <% total_rating += review.rating %>
+      <% count += 1 %>
+    <% end %>
+    <% average_rating = total_rating/count if count > 0 %>
+    <% average_rating.to_i %>
     <div class="recipe-card">
       <%= link_to "", recipe_path(recipe), class: "stretched-link" %>
       <%= cl_image_tag recipe.photo.key, class: "rounded index-img", width: "100%", height: '200px', alt: "an image of a recipe" %>
-      <h5 class="card-title pt-4 text-center"><%= recipe.name %></h5>
-      <p class="card-text text-center pb-4"><%= recipe.cooking_time %> mins</p>
+      <h5 class="card-title pt-4 text-center">🥘 <%= recipe.name %></h5>
+      <h6 class="p-4 text-center"><%= recipe.description.split('.').first %></h6>
+      <p class="card-text text-center">Creator🧑‍🍳 <%= recipe.creator.username %></p>
+      <p class="card-text text-center pb-4">⏰ <%= recipe.cooking_time %> mins</p>
+      <p class="card-text text-center pb-4">
+      Average Rating:
+      <% if count > 0 %>
+        <% average_rating.to_i.times do %>
+          ⭐️
+        <% end %>
+      <% else %>
+        No ratings
+      <% end %>
+      </p>
     </div>
     <% end %>
   </div>
