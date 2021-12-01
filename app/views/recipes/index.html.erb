@@ -34,6 +34,7 @@
 <br><br>
   <div class="cards">
   <% @recipes.each do |recipe| %>
+    <div class="recipe-card" data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-offset="-220" data-aos-duration="1000">
     <% total_rating = 0 %>
     <% count = 0 %>
     <% recipe.reviews.each do |review| %>
@@ -42,7 +43,7 @@
     <% end %>
     <% average_rating = total_rating/count if count > 0 %>
     <% average_rating.to_i %>
-    <div class="recipe-card">
+
       <%= link_to "", recipe_path(recipe), class: "stretched-link" %>
       <%= cl_image_tag recipe.photo.key, class: "rounded index-img", width: "100%", height: '200px', alt: "an image of a recipe" %>
       <h5 class="card-title pt-4 text-center">🥘 <%= recipe.name %></h5>
