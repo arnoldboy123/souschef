@@ -1,16 +1,16 @@
 <div class="container col-11 mx-auto">
   <h2>Following:</h2>
 
-  <ul>
   <% @following.each do |friend| %>
-    <li>
-    <%= friend.recipient.username %>
-    <%= link_to user_friend_request_path(current_user, friend.id), method: :delete do %>
-      <i class="fas fa-user-minus"></i>
-    <% end %>
-    </li>
+    <div class="friend-card">
+      <%= cl_image_tag friend.recipient.photo.key, class: "avatar-sm", alt: "user_image" %>
+      <%= friend.recipient.username %>
+      <%= link_to user_friend_request_path(current_user, friend.id), method: :delete do %>
+        <i class="fas fa-user-minus"></i>
+      <% end %>
+    </div>
   <% end %>
-  </ul>
+
   <div class="pb-0 pt-1 pb-5 text-center">
     <%= form_tag users_path, method: :get do %>
       <%= text_field_tag :query,
@@ -23,7 +23,8 @@
   </div>
   <ul>
   <% @users.each do |user| %>
-    <li><%= user.email %>
+    <li><%= cl_image_tag user.photo.key, class: "avatar", alt: "user_image" %>
+    <%= user.email %>
     <% @friends = [] %>
     <% @friends = @following.target.map { |link| link.recipient } %>
     <% if @friends.include?(user) %>
