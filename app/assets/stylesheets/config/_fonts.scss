@@ -7,12 +7,8 @@
 
 // Define fonts for body and headers
 $body-font: "Mulish", "Helvetica", "serif";
-$headers-font:  'lobster', sans-serif;
+$headers-font:  'mulish', sans-serif;
 
-@font-face {
-   font-family: 'lobster';
-   src: asset_url('HRLOWSI.ttf');
-}
 // $headers-font: 'harlow-solid-italic-italic', sans-serif;
 // To use a font file (.woff) uncomment following lines
 // @font-face {
