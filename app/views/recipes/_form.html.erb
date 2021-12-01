@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
   <%= simple_form_for(@recipe) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
@@ -6,6 +6,6 @@
     <%= f.association :ingredients, collection: Ingredient.all, input_html: {multiple: true, data: { controller: 'select2' }} %>
     <%= f.input :cooking_time %>
     <%= f.input :photo, as: :file %>
-    <%= f.submit "add recipe", class: "btn btn-primary" %>
+    <%= f.submit "add recipe", class: "general-button-blue" %>
   <% end %>
 </div>
