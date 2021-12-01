@@ -25,8 +25,22 @@ end
 
 puts "adding admin"
 user = User.new(email: 'souschef@gmail.com', username: 'admin', password: '123456')
+user.photo.attach(io: File.open('app/assets/images/admin.jpg'), filename: 'admin.jpg', content_type: 'image/jpg')
 user.save!
 puts "email: souschef@gmail.com, password: 123456"
+
+puts "adding other users"
+user = User.new(email: 'tim@gmail.com', username: 'Tim', password: '123456')
+user.photo.attach(io: File.open('app/assets/images/tim.jpg'), filename: 'tim.jpg', content_type: 'image/jpg')
+user.save!
+
+user = User.new(email: 'kate@gmail.com', username: 'Kate', password: '123456')
+user.photo.attach(io: File.open('app/assets/images/kate.jpg'), filename: 'kate.jpg', content_type: 'image/jpg')
+user.save!
+
+user = User.new(email: 'frank@gmail.com', username: 'Frank', password: '123456')
+user.photo.attach(io: File.open('app/assets/images/frank.jpg'), filename: 'frank.jpg', content_type: 'image/jpg')
+user.save!
 
 puts "removing ingredients..."
 Ingredient.destroy_all
