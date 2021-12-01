@@ -2,13 +2,17 @@
 .banner-show {
   margin: 10px 0 10px;
   padding-bottom: 10px;
-  position: relative;
 }
 
 .recipe-show-page-img {
   border-bottom-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
+.img-holder {
+  position: relative;
+}
+
 // banner recipe show page
 
 // body recipe show page
@@ -33,7 +37,7 @@
   background-size: cover;
   background-position: center;
   padding: 100px 0;
-  border-top-left-radius: 40px;
+  border-top-left-radius: 20px;
 }
 
 .banner-recipe h1 {

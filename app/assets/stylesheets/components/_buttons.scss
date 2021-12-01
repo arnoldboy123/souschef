@@ -20,6 +20,14 @@ input[type="radio"]:checked + .form-check-label{
 }
 // ------ radio buttons -------
 
+// ------ navbar buttons -------
+.logoutbtn {
+  border: solid 1px grey;
+  padding: 5px 5px;
+  border-radius: 30px;
+  margin-top: 40px;
+}
+// ------ navbar buttons -------
 
 // ------ search bar MyFridge/new buttons -------
 .search-ingredient-btn{
@@ -89,7 +97,7 @@ input[type="radio"]:checked + .form-check-label{
 .add-rcp-btn {
   display: inline-block;
   position: absolute;
-  top: 85px;
+  top: -8px;
   right: 0;
   opacity: 1!important;
 }

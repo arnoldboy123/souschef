@@ -43,3 +43,16 @@
   border-radius: 5px;
   position: relative;
 }
+
+.friend-card {
+  border-radius: 5px;
+  border: solid 1px navy;
+  padding: 10px 20px;
+  margin-bottom: 5px;
+  background-color: transparent;
+  display: inline-block;
+}
+
+.fa-user-minus {
+  font-size: 16px;
+}
