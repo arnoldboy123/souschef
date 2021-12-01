@@ -20,6 +20,14 @@ input[type="radio"]:checked + .form-check-label{
 }
 // ------ radio buttons -------
 
+// ------ navbar buttons -------
+.logoutbtn {
+  border: solid 1px grey;
+  padding: 5px 5px;
+  border-radius: 30px;
+  margin-top: 40px;
+}
+// ------ navbar buttons -------
 
 // ------ search bar MyFridge/new buttons -------
 .search-ingredient-btn{
