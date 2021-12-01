@@ -14,7 +14,7 @@
         <% if @recipe.reviews.empty? %>
           Be the first to leave a rating
         <% else %>
-          <%= @average_rating %>
+          <strong><%= @average_rating %></strong><%= link_to " (#{@recipe.reviews.count} reviews)", recipe_path(@recipe, anchor: "reviews"), class: "text-small" %>
         <% end %>
       </h6>
       <p><%= @recipe.cooking_time %>min</p>
