@@ -2,8 +2,8 @@
   <%= image_tag("shoppinglist.png", :width => "190px"  )  %>
 </div>
 
-<div class="container col-11 mx-auto">
-  <div class="d-flex flex-column mt-3 mx-3" data-controller="shopping-list">
+<div class="container col-11 mx-auto main-container">
+  <div class="d-flex flex-column mt-3 mx-3 h-500" data-controller="shopping-list">
     <% @shopping_list.each do |shopping, num| %>
       <% if num > 0 %>
       <% @fridge_item = FridgeItem.new %>
