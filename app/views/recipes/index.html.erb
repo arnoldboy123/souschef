@@ -34,7 +34,8 @@
 <br><br>
   <div class="cards">
   <% @recipes.each do |recipe| %>
-    <div class="recipe-card">
+    <div class="recipe-card" data-aos="fade-up"
+    data-aos-anchor-placement="top-center" data-aos-offset="-220" data-aos-duration="1000">
       <%= link_to "", recipe_path(recipe), class: "stretched-link" %>
       <%= cl_image_tag recipe.photo.key, class: "rounded index-img", width: "100%", height: '200px', alt: "an image of a recipe" %>
       <h5 class="card-title pt-4 text-center"><%= recipe.name %></h5>
