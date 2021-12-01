@@ -2,21 +2,18 @@
   <%= image_tag("shoppinglist.png", :width => "190px"  )  %>
 </div>
 
-<div class="container col-11 mx-auto">
+<div class="container">
   <div class="d-flex flex-column mt-3 mx-3" data-controller="shopping-list">
     <% @shopping_list.each do |shopping, num| %>
       <% if num > 0 %>
       <% @fridge_item = FridgeItem.new %>
-        <div id="shopping-row" class="row d-flex justify-content-between my-2" data-shopping-list-target="item">
+        <div id="shopping-row" class="row d-flex justify-content-between my-3" data-shopping-list-target="item">
           <div class="d-inline w-100">
             <%= shopping %>
           </div>
           <div class="d-inline text-right">
             <%= form_for @fridge_item, url: add_fridge_item_path(shopping), method: :get do |f| %>
-              <% unless Ingredient.where(name:shopping).first.unit == "number" %>
-                <span class="text-muted"><%= Ingredient.where(name:shopping).first.unit %></span>
-              <% end %>
-              <%= f.text_field :quantity, as: :integer, class: "w-25", placeholder: num %>
+              <%= f.text_field :quantity, as: :integer, placeholder: "#{num}" + "#{Ingredient.where(name:shopping).first.unit unless Ingredient.where(name:shopping).first.unit == "number"}" %>
               <%= button_tag class: 'border-none align-middle', type: 'submit' do %>
                 <i class="fas fa-shopping-basket" data-shopping-list-target='button'></i>
               <% end %>

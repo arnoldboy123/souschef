@@ -1,9 +1,9 @@
-<div class="form-container m-3">
-  <div class="form">
+<div class="form-container m-4 mt-5">
+  <div class="form text-center">
     <%= simple_form_for [ post ] do |f| %>
       <%= f.association :recipe, collection: recipes, class:"text-left" %>
       <%= f.input :content, class:"text-left" %>
-      <%= f.submit "Share what you cooked!", class: "search-ingredient-btn text-center mx-4" %>
+      <%= f.submit "Share what you cooked!", class: "general-button-green text-center mt-4" %>
     <% end %>
   </div>
 </div>
