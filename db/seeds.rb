@@ -990,16 +990,6 @@ sleep(0.5)
     recipe_item.ingredient_id = custard.id
     recipe_item.recipe_id = recipe7.id
     recipe_item.quantity = 600
-    recipe_item.save!\
-
-  custard = Ingredient.new(name: "custard", unit: "ml")
-  custard.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = custard.id
-    recipe_item.recipe_id = recipe7.id
-    recipe_item.quantity = 600
     recipe_item.save!
 
   brandy = Ingredient.new(name: "brandy", unit: "ml")
