@@ -24,16 +24,18 @@
     <div class="show-review-ing d-flex flex-column mt-3 mx-3">
         <h5 class="text-center pb-5" id="anchor-item">Ingredients</h5>
         <% @recipe.recipe_items.each do |item| %>
-        <div class="d-flex justify-content-left">
-        <div class="mt-2">
-          <p class="d-flex align-items-center" %><strong> <%= item.quantity %><%= item.ingredient.unit unless item.ingredient.unit == "number" %> x <%= item.ingredient.name %> </strong></p>
-        </div>
-        <div class="mt-0">
-          <button type="" class="btn btn-add-ingredient" data-toggle="modal" data-target=<%="#itemModal#{item.ingredient.name}"%> >
-            ✏️
-          </button>
-        </div>
-        </div>
+          <% if item.quantity > 0%>
+          <div class="d-flex justify-content-left">
+            <div class="mt-2">
+                <p class="d-flex align-items-center" %><strong> <%= item.quantity %><%= item.ingredient.unit unless item.ingredient.unit == "number" %> x <%= item.ingredient.name %> </strong></p>
+            </div>
+            <div class="mt-0">
+              <button type="" class="btn btn-add-ingredient" data-toggle="modal" data-target=<%="#itemModal#{item.ingredient.name}"%> >
+                ✏️
+              </button>
+            </div>
+          </div>
+          <% end %>
         <% end  %>
     </div>
   </div>
