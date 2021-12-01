@@ -1,34 +1,39 @@
-<h2>Following:</h2>
+<div class="container col-11 mx-auto">
+  <h2>Following:</h2>
 
-<div class="pb-0 pt-1 pb-5 text-center">
-  <%= form_tag users_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a new sous-chef"
-    %>
-    <%= submit_tag "Search", class: "general-button-blue" %>
-  <% end %>
-</div>
-
-<ul>
-<% @following.each do |friend| %>
-  <li><%= friend.recipient.username %></li>
-<% end %>
-</ul>
-<hr>
-<ul>
-<% @users.each do |user| %>
-  <li><%= user.email %>
-  <% @friends = [] %>
-  <% @friends = @following.target.map { |link| link.recipient } %>
-  <% if @friends.include?(user) %>
-    <i class="fas fa-user-friends"></i>
-  <% else %>
-      <%= link_to user_friend_requests_path(user), method: :post do %>
-      <i class="fas fa-user-plus"></i>
+  <ul>
+  <% @following.each do |friend| %>
+    <li>
+    <%= friend.recipient.username %>
+    <%= link_to user_friend_request_path(current_user, friend.id), method: :delete do %>
+      <i class="fas fa-user-minus"></i>
     <% end %>
+    </li>
   <% end %>
-  </li>
-<% end %>
-</ul>
+  </ul>
+  <div class="pb-0 pt-1 pb-5 text-center">
+    <%= form_tag users_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a new sous-chef"
+      %>
+      <%= submit_tag "Search", class: "general-button-blue" %>
+    <% end %>
+  </div>
+  <ul>
+  <% @users.each do |user| %>
+    <li><%= user.email %>
+    <% @friends = [] %>
+    <% @friends = @following.target.map { |link| link.recipient } %>
+    <% if @friends.include?(user) %>
+      <i class="fas fa-user-friends"></i>
+    <% else %>
+      <%= link_to user_friend_requests_path(user), method: :post do %>
+        <i class="fas fa-user-plus"></i>
+      <% end %>
+    <% end %>
+    </li>
+  <% end %>
+  </ul>
+</div>
