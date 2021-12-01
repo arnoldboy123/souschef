@@ -30,9 +30,13 @@
                 <p class="d-flex align-items-center" %><strong> <%= item.quantity %><%= item.ingredient.unit unless item.ingredient.unit == "number" %> x <%= item.ingredient.name %> </strong></p>
             </div>
             <div class="mt-0">
+            <% if @recipe.creator_id != current_user %>
+            <%= "" %>
+            <% else %>
               <button type="" class="btn btn-add-ingredient" data-toggle="modal" data-target=<%="#itemModal#{item.ingredient.name}"%> >
                 ✏️
               </button>
+            <% end %>
             </div>
           </div>
           <% end %>
