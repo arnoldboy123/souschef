@@ -3,6 +3,7 @@
   // object-position: center;
   box-shadow: 1px 1px 5px grey;
   object-position: 50% 50%;
+  position: relative;
 }
 
 .index-img {
@@ -14,7 +15,7 @@
 
 .pages-header {
   border-bottom: 1px solid grey;
-  margin: 0 50px 0 50px;
   display:flex;
   justify-content: center;
+  margin: 60px 50px 0 50px;
 }

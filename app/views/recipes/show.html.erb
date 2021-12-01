@@ -1,12 +1,14 @@
-
 <div class="show-page-container">
   <div class="banner-show"></div>
+  <div class="img-holder">
     <%= cl_image_tag @recipe.photo.key, class: "show-img center", width: "100%", height: '200px', alt: "an image of a recipe" %>
-  </div>
     <%= link_to "Add recipe!", steal_planned_recipe_path(@recipe), method: :post, class: "add-rcp-btn btn-myplanner general-button-blue text-white" %>
+  </div>
 
-    <h5 class="text-center my-5"><%= @recipe.name %></h5>
-    <p class="text-center mb-5"><%= @recipe.description %></p>
+    <div class="show-review d-flex flex-column pb-4">
+      <h5 class="text-center my-5"><%= @recipe.name %></h5>
+      <p class="text-center mb-5"><%= @recipe.description %></p>
+    </div>
     <div class="show-review d-flex justify-content-between">
       <h6 class="pl-10">
         <% if @recipe.reviews.empty? %>
@@ -18,12 +20,23 @@
       <p><%= @recipe.cooking_time %>min</p>
     </div>
 
-    <div class="show-review-ing d-flex flex-column pb-4">
-      <h5 class="text-center pb-5">Ingredients</h5>
-      <% @recipe.recipe_items.each do |item| %>
-        <p class="text-center"><strong> <%= item.quantity %> x <%= item.ingredient.name %> </strong></p>
-      <% end  %>
+  <div class="container col-11 mx-auto">
+    <div class="show-review-ing d-flex flex-column mt-3 mx-3">
+        <h5 class="text-center pb-5" id="anchor-item">Ingredients</h5>
+        <% @recipe.recipe_items.each do |item| %>
+        <div class="d-flex justify-content-left">
+        <div class="mt-2">
+          <p class="d-flex align-items-center" %><strong> <%= item.quantity %><%= item.ingredient.unit unless item.ingredient.unit == "number" %> x <%= item.ingredient.name %> </strong></p>
+        </div>
+        <div class="mt-0">
+          <button type="" class="btn btn-add-ingredient" data-toggle="modal" data-target=<%="#itemModal#{item.ingredient.name}"%> >
+            ✏️
+          </button>
+        </div>
+        </div>
+        <% end  %>
     </div>
+  </div>
 
     <div class="show-review-ing d-flex flex-column">
       <h5 class="text-center my-3">Instructions</h5>
@@ -47,6 +60,34 @@
     </div>
   </div>
 </div>
+
+<!-- Ingredient Modal -->
+
+<% @recipe.recipe_items.each do |item| %>
+  <div class="modal fade" id=<%="itemModal#{item.ingredient.name}"%> tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <% @recipe_item = item %>
+          <%= simple_form_for [@recipe, @recipe_item], url: recipe_recipe_item_path(@recipe) , method: :patch do |f| %>
+          <%= f.input :quantity, as: :integer %>
+          <%= f.input :id, as: :hidden, input_html: {value: @recipe_item.id} %>
+          <%= f.submit %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+<!-- Review Modal -->
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
