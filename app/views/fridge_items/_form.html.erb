@@ -20,11 +20,11 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body text-center">
           <%= simple_form_for fridge_item do |f| %>
             <%= f.input :quantity, as: :integer %>
             <%= f.input :ingredient_id, as: :hidden, input_html: { value: ingredient.id } %>
-            <%= f.submit "Add to fridge", class: "search-ingredient-btn text-center" %>
+            <%= f.submit "Add to fridge", class: "general-button-blue text-center" %>
           <% end %>
         </div>
       </div>
