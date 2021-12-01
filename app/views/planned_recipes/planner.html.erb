@@ -20,7 +20,8 @@
 
 <% if @future_meals.count > 0 %>
   <div class="text-center text-small">
-    <p><small><%= link_to "Shopping list", shopping_list_planned_recipes_path, class: "btn-myplanner general-button-blue text-white" %>
+    <small><%= link_to "Generate Shopping list", shopping_list_planned_recipes_path, class: "btn-myplanner general-button-blue text-white" %>
+    <br>
     <button type="button" class="btn-myplanner general-button-green text-white" data-toggle="modal" data-target="#exampleModal">
       Add days
     <small></button>
