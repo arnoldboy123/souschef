@@ -27,15 +27,15 @@
           <% if item.quantity > 0%>
           <div class="d-flex justify-content-left">
             <div class="mt-2">
-                <p class="d-flex align-items-center" %><strong> <%= item.quantity %><%= item.ingredient.unit unless item.ingredient.unit == "number" %> x <%= item.ingredient.name %> </strong></p>
+              <p class="d-flex align-items-center" %><strong> <%= item.quantity %><%= item.ingredient.unit unless item.ingredient.unit == "number" %> x <%= item.ingredient.name %> </strong></p>
             </div>
             <div class="mt-0">
-            <% if @recipe.creator_id != current_user %>
-            <%= "" %>
-            <% else %>
+            <% if item.recipe.creator_id == current_user.id %>
               <button type="" class="btn btn-add-ingredient" data-toggle="modal" data-target=<%="#itemModal#{item.ingredient.name}"%> >
                 ✏️
               </button>
+            <% else %>
+              <%= "" %>
             <% end %>
             </div>
           </div>
