@@ -14,7 +14,7 @@
         <% if @recipe.reviews.empty? %>
           Be the first to leave a rating
         <% else %>
-          <%= @average_rating %>
+          <strong><%= @average_rating %></strong><%= link_to " (#{@recipe.reviews.count} reviews)", recipe_path(@recipe, anchor: "reviews"), class: "text-small" %>
         <% end %>
       </h6>
       <p><%= @recipe.cooking_time %>min</p>
@@ -27,12 +27,16 @@
           <% if item.quantity > 0%>
           <div class="d-flex justify-content-left">
             <div class="mt-2">
-                <p class="d-flex align-items-center" %><strong> <%= item.quantity %><%= item.ingredient.unit unless item.ingredient.unit == "number" %> x <%= item.ingredient.name %> </strong></p>
+              <p class="d-flex align-items-center" %><strong> <%= item.quantity %><%= item.ingredient.unit unless item.ingredient.unit == "number" %> x <%= item.ingredient.name %> </strong></p>
             </div>
             <div class="mt-0">
+            <% if item.recipe.creator_id == current_user.id %>
               <button type="" class="btn btn-add-ingredient" data-toggle="modal" data-target=<%="#itemModal#{item.ingredient.name}"%> >
                 ✏️
               </button>
+            <% else %>
+              <%= "" %>
+            <% end %>
             </div>
           </div>
           <% end %>

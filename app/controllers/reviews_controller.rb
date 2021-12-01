@@ -11,8 +11,8 @@ class ReviewsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @review.recipe_id = @recipe.id
     @review.user_id = current_user.id
-    if @review.save
-      redirect_to recipes_path(@recipe), notice: "Review was successfully created."
+    if @review.save!
+      redirect_to recipe_path(@recipe), notice: "Review was successfully created."
     else
       flash[:alert] = "Something went wrong."
       render :new
