@@ -27,11 +27,8 @@ class PlannedRecipesController < ApplicationController
   end
 
   def update
-    if @planned_recipe.update(planned_recipe_params)
-      redirect_to planned_recipes_path(@planned_recipe)
-    else
-      render :new
-    end
+    @planned_recipe.update(planned_recipe_params)
+    redirect_to planned_recipes_path(@planned_recipe)
   end
 
   def planner
