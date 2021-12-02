@@ -383,16 +383,6 @@ sleep(0.5)
     recipe_item.quantity = 2
     recipe_item.save!
 
-  black_pepper= Ingredient.new(name: "black pepper", unit: "g")
-  black_pepper.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = black_pepper.id
-    recipe_item.recipe_id = recipe1.id
-    recipe_item.quantity = 2
-    recipe_item.save!
-
   salt = Ingredient.new(name: "salt", unit: "g")
   salt.save!
   puts "add some ingredients to recipes"
@@ -530,16 +520,6 @@ sleep(0.5)
     recipe_item.quantity = 400
     recipe_item.save!
 
-  black_pepper = Ingredient.new(name: "black pepper", unit: "grams")
-  black_pepper.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = black_pepper.id
-    recipe_item.recipe_id = recipe2.id
-    recipe_item.quantity = 1
-    recipe_item.save!
-
   olive_oil = Ingredient.new(name: "olive oil", unit: "ml")
   olive_oil.save!
   puts "add some ingredients to recipes"
@@ -611,16 +591,6 @@ sleep(0.5)
     recipe_item.quantity = 4
     recipe_item.save!
 
-  butter = Ingredient.new(name: "butter", unit: "g")
-  butter.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = butter.id
-    recipe_item.recipe_id = recipe2.id
-    recipe_item.quantity = 200
-    recipe_item.save!
-
   lemon = Ingredient.new(name: "lemon", unit: "number")
   lemon.save!
   puts "add some ingredients to recipes"
@@ -681,7 +651,7 @@ sleep(0.5)
     recipe_item.quantity = 3
     recipe_item.save!
 
-  goose_giblets = Ingredient.new(name: "red apples", unit: "number")
+  goose_giblets = Ingredient.new(name: "goose giblets", unit: "number")
   goose_giblets.save!
   puts "add some ingredients to recipes"
 
@@ -742,16 +712,6 @@ sleep(0.5)
     recipe_item.quantity = 1
     recipe_item.save!
 
-  caster_sugar = Ingredient.new(name: "caster sugar", unit: "g")
-  caster_sugar.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = caster_sugar.id
-    recipe_item.recipe_id = recipe3.id
-    recipe_item.quantity = 14
-    recipe_item.save!
-
   goose_liver = Ingredient.new(name: "goose liver", unit: "number")
   goose_liver.save!
   puts "add some ingredients to recipes"
@@ -790,16 +750,6 @@ sleep(0.5)
     recipe_item.ingredient_id = sage.id
     recipe_item.recipe_id = recipe3.id
     recipe_item.quantity = 4
-    recipe_item.save!
-
-  plain_flour = Ingredient.new(name: "plain flour", unit: "g")
-  plain_flour.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = plain_flour.id
-    recipe_item.recipe_id = recipe3.id
-    recipe_item.quantity = 30
     recipe_item.save!
 
   giblet_stock = Ingredient.new(name: "giblet stock", unit: "ml")
@@ -860,26 +810,6 @@ sleep(0.5)
     recipe_item.ingredient_id = garlic.id
     recipe_item.recipe_id = recipe4.id
     recipe_item.quantity = 250
-    recipe_item.save!
-
-  potatoes = Ingredient.new(name: "potatoes", unit: "kg")
-  potatoes.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = potatoes.id
-    recipe_item.recipe_id = recipe5.id
-    recipe_item.quantity = 1
-    recipe_item.save!
-
-  plain_flour = Ingredient.new(name: "plain flour", unit: "g")
-  plain_flour.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = plain_flour.id
-    recipe_item.recipe_id = recipe5.id
-    recipe_item.quantity = 30
     recipe_item.save!
 
   parsnips = Ingredient.new(name: "parsnips", unit: "kg")
@@ -1002,16 +932,6 @@ sleep(0.5)
     recipe_item.quantity = 60
     recipe_item.save!
 
-  # lemon = Ingredient.new(name: "lemon", unit: "number")
-  # lemon.save!
-  # puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = lemon.id
-    recipe_item.recipe_id = recipe7.id
-    recipe_item.quantity = 1
-    recipe_item.save!
-
   caster_sugar = Ingredient.new(name: "caster sugar", unit: "g")
   caster_sugar.save!
   puts "add some ingredients to recipes"
@@ -1020,16 +940,6 @@ sleep(0.5)
     recipe_item.ingredient_id = caster_sugar.id
     recipe_item.recipe_id = recipe7.id
     recipe_item.quantity = 55
-    recipe_item.save!
-
-  double_cream = Ingredient.new(name: "double cream", unit: "ml")
-  double_cream.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = double_cream.id
-    recipe_item.recipe_id = recipe7.id
-    recipe_item.quantity = 425
     recipe_item.save!
 
   freshly_grated_nutmeg = Ingredient.new(name: "freshly grated nutmeg", unit: "number")
@@ -1133,35 +1043,15 @@ sleep(0.5)
     recipe_item.quantity = 100
     recipe_item.save!
 
-  white_breadcrumbs = Ingredient.new(name: "white breadcrumbs", unit: "g")
-  white_breadcrumbs.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = white_breadcrumbs.id
-    recipe_item.recipe_id = recipe8.id
-    recipe_item.quantity = 100
-    recipe_item.save!
-
-  plain_flour = Ingredient.new(name: "plain flour", unit: "g")
-  plain_flour.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = plain_flour.id
-    recipe_item.recipe_id = recipe8.id
-    recipe_item.quantity = 50
-    recipe_item.save!
-
   # butter = Ingredient.new(name: "butter", unit: "g")
   # butter.save!
   # puts "add some ingredients to recipes"
 
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = butter.id
-    recipe_item.recipe_id = recipe8.id
-    recipe_item.quantity = 100
-    recipe_item.save!
+    # recipe_item = RecipeItem.new
+    # recipe_item.ingredient_id = butter.id
+    # recipe_item.recipe_id = recipe8.id
+    # recipe_item.quantity = 100
+    # recipe_item.save!
 
   # freshly_grated_nutmeg = Ingredient.new(name: "plain flour", unit: "number")
   # freshly_grated_nutmeg.save!
@@ -1251,16 +1141,6 @@ sleep(0.5)
 
     recipe_item = RecipeItem.new
     recipe_item.ingredient_id = honey.id
-    recipe_item.recipe_id = recipe9.id
-    recipe_item.quantity = 15
-    recipe_item.save!
-
-  olive_oil = Ingredient.new(name: "olive oil", unit: "ml")
-  olive_oil.save!
-  puts "add some ingredients to recipes"
-
-    recipe_item = RecipeItem.new
-    recipe_item.ingredient_id = olive_oil.id
     recipe_item.recipe_id = recipe9.id
     recipe_item.quantity = 15
     recipe_item.save!
