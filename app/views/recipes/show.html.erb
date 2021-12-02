@@ -2,7 +2,9 @@
   <div class="banner-show"></div>
   <div class="img-holder">
     <%= cl_image_tag @recipe.photo.key, class: "show-img center", width: "100%", height: '200px', alt: "an image of a recipe" %>
-    <%= link_to "Add recipe!", steal_planned_recipe_path(@recipe), method: :post, class: "add-rcp-btn btn-myplanner general-button-blue text-white" %>
+    <% unless current_user == @recipe.creator %>
+      <%= link_to "Add recipe!", steal_planned_recipe_path(@recipe), method: :post, class: "add-rcp-btn btn-myplanner general-button-blue text-white" %>
+    <% end %>
   </div>
 
     <div class="show-review d-flex flex-column pb-4">
@@ -60,11 +62,10 @@
           <p>Be the first to <span data-toggle="modal" data-target="#exampleModal"><strong>leave a review</strong></span> for <%= @recipe.name %> !</p>
         <% else %>
           <% @recipe.reviews.each do |review| %>
-            <p> Posted by: <%= review.user.username %> </p>
+            <p> <%= review.user.username.capitalize %> said "<%= review.comment.capitalize %>"</p>
             <p><% review.rating.to_i.times do  %>
               <i class="fas fa-star"></i>
             <% end %>
-            <p class="text-left"><%= review.comment.capitalize %> <%= review.user_id != current_user.id ? "" : (link_to "✏️", edit_recipe_review_path(@recipe, review)) %></p>
           <% end %>
         <% end %>
       </div>
