@@ -1,9 +1,9 @@
 <div class="pages-header">
-  <h2 class="text-center m-5 page-title">Shopping List</h2>
+  <h2 class="text-center mb-5 page-title">Shopping List</h2>
 </div>
 
 
-<div class="container">
+<div class="container mt-5">
   <div class="d-flex flex-column mt-3 mx-3" data-controller="shopping-list">
     <% @shopping_list.each do |shopping, num| %>
       <% if num > 0 %>
@@ -25,4 +25,10 @@
       <% end %>
     <% end %>
   </div>
+</div>
+
+<div class="closingbar"></div>
+
+<div class="button-show d-flex flex-column justify-content-around">
+  <%= link_to "Back", recipes_path(@recipes), class: "btn btn-showpage" %>
 </div>
