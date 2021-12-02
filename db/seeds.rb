@@ -24,7 +24,7 @@ html_doc.search('.standard-card-new__article-title').each do |element|
 end
 
 puts "adding admin"
-user = User.new(email: 'souschef@gmail.com', username: 'admin', password: '123456')
+user = User.new(email: 'souschef@gmail.com', username: 'Tom', password: '123456')
 user.photo.attach(io: File.open('app/assets/images/admin.jpg'), filename: 'admin.jpg', content_type: 'image/jpg')
 user.save!
 puts "email: souschef@gmail.com, password: 123456"
@@ -41,6 +41,15 @@ user.save!
 user = User.new(email: 'frank@gmail.com', username: 'Frank', password: '123456')
 user.photo.attach(io: File.open('app/assets/images/frank.jpg'), filename: 'frank.jpg', content_type: 'image/jpg')
 user.save!
+
+user = User.new(email: 'gordon@gmail.com', username: 'Gordon Ramsey', password: '123456')
+user.photo.attach(io: File.open('app/assets/images/gordon.jpg'), filename: 'gordon.jpg', content_type: 'image/jpg')
+user.save!
+
+user = User.new(email: 'jamie@gmail.com', username: 'Jamie Oliver', password: '123456')
+user.photo.attach(io: File.open('app/assets/images/jamie.jpeg'), filename: 'jamie.jpeg', content_type: 'image/jpg')
+user.save!
+
 
 puts "removing ingredients..."
 Ingredient.destroy_all
@@ -323,7 +332,7 @@ puts "adding some recipes"
   recipe10 = Recipe.new(
     name: 'Classic pigs in blankets',
     description: 'Everybody loves this traditional Christmas side dish and weve got three tasty twists including black pudding, butternut squash and chestnuts – you choose!',
-    creator: User.first,
+    creator: User.last,
     instructions: '
       STEP 1
         Heat oven to 190C/170C fan/gas 5. Cut the bacon rashers in half. Wrap a piece of bacon around each of the chipolatas.
@@ -336,6 +345,36 @@ puts "adding some recipes"
   file10 = URI.open('https://images.immediate.co.uk/production/volatile/sites/30/2020/08/pigs-in-blankets-04fc5e2.jpg?quality=90&webp=true&resize=440,400')
   recipe10.photo.attach(io: file10, filename: 'rec.png', content_type: 'image/png')
   recipe10.save!
+
+  recipe11 = Recipe.new(
+  name: 'Spaghetti carbonara',
+  description: 'A quick classic with only four ingredients!',
+  creator: User.first,
+  instructions: '
+    Boil a pan of water, and in the meantime, grate the pecorino, and dice the guanciale. Fry the guanciale in a frying pan until sitting in a pool of its own fat, and crisping nicely. When the spaghetti is just about cooked, drain, add to the frying pan, turn the heat off, add an egg and the cheese, and mix together until the egg is just about cooked.',
+  cooking_time: 15
+  )
+
+  file11 = URI.open('https://img.jamieoliver.com/jamieoliver/recipe-database/oldImages/large/1558_1_1436795948.jpg?tr=w-800,h-1066')
+  recipe11.photo.attach(io: file11, filename: 'rec.png', content_type: 'image/png')
+  recipe11.save!
+
+    recipe12 = Recipe.new(
+  name: 'Hawaiian Pizza',
+  description: 'If you like pineapple, add a ray of sunshine to your week with a cheeky Hawaiian pizza. It’s easy to make your own pizza dough – though you’ll need to allow time for it to rise – and so much tastier than ready-made pizza bases.',
+  creator: User.first,
+  instructions: '
+    Prepare pizza dough through step 5, including preheating the oven to 475°F (246°C). Cover the shaped dough lightly with plastic wrap and allow it to rest as the oven preheats.
+To prevent the pizza toppings from making your pizza crust soggy, brush the shaped dough lightly with olive oil. Using your fingers, push dents into the surface of the dough to prevent bubbling. Top the dough evenly with pizza sauce, then add the cheese, ham, pineapple, and bacon.
+Bake pizza for 12-15 minutes. Remove from the oven and top with fresh basil, if desired. Slice hot pizza and serve immediately.
+Cover leftover pizza tightly and store in the refrigerator. Reheat as you prefer. Baked pizza slices can be frozen up to 3 months. See pizza crust recipe for instructions on freezing the pizza dough.',
+  cooking_time: 25
+  )
+
+  file12 = URI.open('https://cdn.sallysbakingaddiction.com/wp-content/uploads/2014/08/It-doesnt-get-much-better-than-Homemade-Hawaiian-Pizza.-Tropical-paradise-for-dinner.jpg')
+  recipe12.photo.attach(io: file12, filename: 'rec.png', content_type: 'image/png')
+  recipe12.save!
+
 
   # image_url = "https://source.unsplash.com/random?sig=#{rand(1..10)}/&food/800x600"
 # end
@@ -500,7 +539,7 @@ sleep(0.5)
     recipe_item.quantity = 175
     recipe_item.save!
 
-  beef_meat = Ingredient.new(name: "Beef meat", unit: "grams")
+  beef_meat = Ingredient.new(name: "Beef meat", unit: "g")
   beef_meat.save!
   puts "add some ingredients to recipes"
 
@@ -510,7 +549,7 @@ sleep(0.5)
     recipe_item.quantity = 300
     recipe_item.save!
 
-  potatoes = Ingredient.new(name: "potatoes", unit: "grams")
+  potatoes = Ingredient.new(name: "potatoes", unit: "g")
   potatoes.save!
   puts "add some ingredients to recipes"
 
@@ -1205,5 +1244,118 @@ sleep(0.5)
     recipe_item.recipe_id = recipe10.id
     recipe_item.quantity = 16
     recipe_item.save!
+
+
+  # eggs = Ingredient.new(name: "eggs", unit: "number")
+  # eggs.save!
+  # puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = eggs.id
+    recipe_item.recipe_id = recipe11.id
+    recipe_item.quantity = 3
+    recipe_item.save!
+
+  parmesan_cheese = Ingredient.new(name: "parmesan cheese", unit: "g")
+  parmesan_cheese.save!
+  puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = parmesan_cheese.id
+    recipe_item.recipe_id = recipe11.id
+    recipe_item.quantity = 40
+    recipe_item.save!
+
+  dried_spaghetti = Ingredient.new(name: "dried spaghetti", unit: "g")
+  dried_spaghetti.save!
+  puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = dried_spaghetti.id
+    recipe_item.recipe_id = recipe11.id
+    recipe_item.quantity = 200
+    recipe_item.save!
+
+  # garlic = Ingredient.new(name: "dried spaghetti", unit: "clove")
+  # garlic.save!
+  # puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = garlic.id
+    recipe_item.recipe_id = recipe11.id
+    recipe_item.quantity = 1
+    recipe_item.save!
+
+  extra_virgin_olive_oil = Ingredient.new(name: "extra virgin olive oil", unit: "ml")
+  extra_virgin_olive_oil.save!
+  puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = extra_virgin_olive_oil.id
+    recipe_item.recipe_id = recipe11.id
+    recipe_item.quantity = 40
+    recipe_item.save!
+
+  homemade_pizza_crust = Ingredient.new(name: "homemade pizza crust", unit: "number")
+  homemade_pizza_crust.save!
+  puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = homemade_pizza_crust.id
+    recipe_item.recipe_id = recipe12.id
+    recipe_item.quantity = 1
+    recipe_item.save!
+
+
+  pizza_sauce = Ingredient.new(name: "pizza sauce", unit: "g")
+  pizza_sauce.save!
+  puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = pizza_sauce.id
+    recipe_item.recipe_id = recipe12.id
+    recipe_item.quantity = 130
+    recipe_item.save!
+
+  mozzarella_cheese = Ingredient.new(name: "mozzarella cheese", unit: "g")
+  mozzarella_cheese.save!
+  puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = mozzarella_cheese.id
+    recipe_item.recipe_id = recipe12.id
+    recipe_item.quantity = 180
+    recipe_item.save!
+
+  sliced_ham = Ingredient.new(name: "sliced ham", unit: "g")
+  sliced_ham.save!
+  puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = sliced_ham.id
+    recipe_item.recipe_id = recipe12.id
+    recipe_item.quantity = 75
+    recipe_item.save!
+
+  pineapple_chunks= Ingredient.new(name: "pineapple chunks", unit: "g")
+  pineapple_chunks.save!
+  puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = pineapple_chunks.id
+    recipe_item.recipe_id = recipe12.id
+    recipe_item.quantity = 82
+    recipe_item.save!
+
+  # cured_bacon= Ingredient.new(name: "cured bacon", unit: "rashers")
+  # cured_bacon.save!
+  # puts "add some ingredients to recipes"
+
+    recipe_item = RecipeItem.new
+    recipe_item.ingredient_id = cured_bacon.id
+    recipe_item.recipe_id = recipe12.id
+    recipe_item.quantity = 3
+    recipe_item.save!
+
 # We already have Recipes, We already have ingredients
 # So we just need to link those two together for each recipes
