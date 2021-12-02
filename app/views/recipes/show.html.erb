@@ -14,7 +14,12 @@
         <% if @recipe.reviews.empty? %>
           Be the first to leave a rating
         <% else %>
-          <strong><%= @average_rating %></strong><%= link_to " (#{@recipe.reviews.count} reviews)", recipe_path(@recipe, anchor: "reviews"), class: "text-small" %>
+          <strong>
+            <% @average_rating.to_i.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+          </strong>
+          <%= link_to " (#{@recipe.reviews.count} #{@recipe.reviews.count > 1 ? "reviews" : "review"})", recipe_path(@recipe, anchor: "reviews"), class: "text-small" %>
         <% end %>
       </h6>
       <p><%= @recipe.cooking_time %>min</p>
@@ -57,7 +62,7 @@
           <% @recipe.reviews.each do |review| %>
             <p> Posted by: <%= review.user.username %> </p>
             <p><% review.rating.to_i.times do  %>
-              <i class="far fa-star"></i>
+              <i class="fas fa-star"></i>
             <% end %>
             <p class="text-left"><%= review.comment.capitalize %> <%= review.user_id != current_user.id ? "" : (link_to "✏️", edit_recipe_review_path(@recipe, review)) %></p>
           <% end %>
