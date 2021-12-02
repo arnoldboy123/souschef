@@ -8,15 +8,15 @@
     <% @shopping_list.each do |shopping, num| %>
       <% if num > 0 %>
       <% @fridge_item = FridgeItem.new %>
-        <div id="shopping-row" class="row d-flex justify-content-between my-3" data-shopping-list-target="item">
+        <div id="shopping-row" class="row d-flex justify-content-between my-1" data-shopping-list-target="item">
           <div class="d-inline w-100">
             <%= shopping %>
           </div>
           <div class="d-inline text-right">
             <%= form_for @fridge_item, url: add_fridge_item_path(shopping), method: :get do |f| %>
-              <%= f.text_field :quantity, as: :integer, placeholder: "#{num}" + "#{Ingredient.where(name:shopping).first.unit unless Ingredient.where(name:shopping).first.unit == "number"}" %>
+              <%= f.text_field :quantity, as: :integer, class: 'mt-0 w-50', placeholder: "#{num}" + "#{Ingredient.where(name:shopping).first.unit unless Ingredient.where(name:shopping).first.unit == "number"}" %>
               <%= button_tag class: 'border-none align-middle', type: 'submit' do %>
-                 <p class="btn-shoppinglist general-button-blue text-white">Add to fridge<p>
+                 <p class="btn-shoppinglist general-button-blue text-white mb-0 mr-0">Add to fridge<p>
                 <% end %>
             <% end %>
           </div>
