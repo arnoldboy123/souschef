@@ -1,7 +1,7 @@
 
 <div class="banner-recipe mt-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://www.naturefresh.ca/wp-content/uploads/How-To-Organize-Your-Fridge-InsideFridge-terraskitchen-873x950.jpg');">
   <div class="container ml-3">
-  <%= link_to "Add to fridge", new_fridge_item_path, class: "add-ing-btn general-button-blue text-white mt-5" %>
+  <%= link_to "Add to fridge", new_fridge_item_path, class: "add-ing-btn general-button-blue text-white mt-5 center" %>
   </div>
 </div>
 
@@ -9,14 +9,14 @@
   <h2 class="text-center m-5 page-title">My fridge</h2>
 </div>
 
-<div class="container m-5 h-500">
+<div class="container m-5 h-500 fridge-list">
   <div class="row">
     <div class="col-11">
       <ul>
         <% @fridge_items.each do |item| %>
           <% if item.quantity.to_i > 0 %>
             <div class=" " >
-              <li class= "fridge m-3 p-0"><strong><%= item.quantity %> <%= item.ingredient.unit %></strong> x <%= item.ingredient.name %> </li>
+              <li class= "fridge m-3 p-0"><strong><%= item.quantity %> <% unless item.ingredient.unit == "number" %><%= item.ingredient.unit %><% end %></strong> x <%= item.ingredient.name %> </li>
             </div>
           <% end %>
         <% end %>
