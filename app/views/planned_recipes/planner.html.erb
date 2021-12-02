@@ -19,9 +19,8 @@
     </div>
   </div>
 
-<div class="closingbar"></div>
-
 <% if @future_meals.count > 0 %>
+  <div class="closingbar"></div>
   <div class="text-center text-small">
     <small><%= link_to "Generate Shopping list", shopping_list_planned_recipes_path, class: "btn-myplanner general-button-blue text-white" %>
     <br>
