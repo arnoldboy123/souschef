@@ -11,18 +11,24 @@
 
 .card-fridge {
   font-size: 10px ;
-  padding: 10px;
+  // padding: 10px;
   margin-bottom: 20px;
+
 }
 
 .fridge-list ul {
   list-style-type: none;
-  margin-left: 0px;
+  margin-left: 20px;
   padding-left: 0px;
 }
 
-.fridge-list li {
-  list-style-type: none;
-  margin-left: 0px;
-  padding-left: 0px;
+// .fridge-list li {
+//   list-style-type: none;
+//   margin-left: 0px;
+//   padding-left: 0px;
+// }
+
+.closingbar {
+  border-top: 1px solid grey;
+  margin: 30px 50px;
 }
