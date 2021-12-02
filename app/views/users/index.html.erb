@@ -1,7 +1,8 @@
-<div class="container col-11 mx-auto">
-  <h2 class="page-title">You currently follow:</h2>
+<div class="pages-header">
+  <h2 class="text-center mb-5 page-title">You currently follow:</h2>
+</div>
 
-
+<div class="container col-11 mx-auto mt-5">
   <% @following.each do |friend| %>
     <div class="friend-card">
       <%= cl_image_tag friend.recipient.photo.key, class: "avatar-sm", alt: "user_image" %>

@@ -1,8 +1,8 @@
 <div class="pages-header">
-<h2 class="text-center m-5 page-title">My Planner</h2>
+<h2 class="text-center mb-5 page-title">My Planner</h2>
 </div>
 
-<div class="h-500">
+<div class="">
   <div class="content-planner">
     <div class="planner-card">
       <% @planner_recipes.each do |recipe| %>
@@ -19,6 +19,7 @@
     </div>
   </div>
 
+<div class="closingbar"></div>
 
 <% if @future_meals.count > 0 %>
   <div class="text-center text-small">
@@ -55,7 +56,7 @@
     <form action="/planned_recipes/planner" method="post" class="recipe-form-home mt-2 mx-3">
       <div class="container">
         <div><input type="integer" name="days" class="search-bar-home mb-1 px-5 py-2 text-small text-center" placeholder="e.g. 5"></div>
-        <div class="text-center"><input value="Go!", type="submit", class="btn-myplanner general-button-blue"></div>
+        <div class="text-center"><input value="Go!", type="submit", class="general-button-blue"></div>
       </div>
     </form>
   <% end %>
