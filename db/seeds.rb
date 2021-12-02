@@ -832,7 +832,7 @@ sleep(0.5)
     recipe_item.quantity = 1
     recipe_item.save!
 
-  cured_bacon = Ingredient.new(name: "cured_bacon", unit: "rashers")
+  cured_bacon = Ingredient.new(name: "cured bacon", unit: "rashers")
   cured_bacon.save!
   puts "add some ingredients to recipes"
 
@@ -1305,7 +1305,7 @@ sleep(0.5)
     recipe_item.quantity = 100
     recipe_item.save!
 
-  smoked_streaky_bacon = Ingredient.new(name: "smoked_streaky_bacon", unit: "rashers")
+  smoked_streaky_bacon = Ingredient.new(name: "smoked streaky bacon", unit: "rashers")
   smoked_streaky_bacon.save!
   puts "add some ingredients to recipes"
 
