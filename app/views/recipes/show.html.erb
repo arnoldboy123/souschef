@@ -2,7 +2,9 @@
   <div class="banner-show"></div>
   <div class="img-holder">
     <%= cl_image_tag @recipe.photo.key, class: "show-img center", width: "100%", height: '200px', alt: "an image of a recipe" %>
-    <%= link_to "Add recipe!", steal_planned_recipe_path(@recipe), method: :post, class: "add-rcp-btn btn-myplanner general-button-blue text-white" %>
+    <% unless current_user == @recipe.creator %>
+      <%= link_to "Add recipe!", steal_planned_recipe_path(@recipe), method: :post, class: "add-rcp-btn btn-myplanner general-button-blue text-white" %>
+    <% end %>
   </div>
 
     <div class="show-review d-flex flex-column pb-4">
