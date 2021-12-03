@@ -6,6 +6,7 @@
   <%= link_to "Share your latest creation!", new_post_path, class: "general-button-green text-white" %>
 </div>
 
+<% @posts = Post.order(created_at: :desc) %>
 <% @posts.each do |post| %>
   <div class="card-post p-0 mt-5">
     <%= cl_image_tag post.recipe.photo.key, class: "rounded index-img", width: "100%", height: '200px', alt: "an image of a recipe" %>
