@@ -1,0 +1,21 @@
+{
+  "name": "Sous Chef",
+  "short_name": "Sous Chef",
+  "description": "Sous Chef makes YOU Chef!",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "32x32",
+      "type": "icon/ico"
+    },
+    {
+      "src": "nonamelogo.png",
+      "sizes": "231x293",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/views/pages/home.html.erb",
+  "display": "fullscreen",
+  "theme_color": "rgba(50,222,96,0.8)",
+  "background_color": "rgba(50,222,96,0.8)"
+}
